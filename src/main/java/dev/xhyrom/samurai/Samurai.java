@@ -1,6 +1,7 @@
 package dev.xhyrom.samurai;
 
 import dev.xhyrom.samurai.commands.ListCommand;
+import dev.xhyrom.samurai.commands.MemoryCommand;
 import dev.xhyrom.samurai.listeners.PlayerLogin;
 import dev.xhyrom.samurai.util.FullbrightDimension;
 import gg.astromc.slimeloader.loader.SlimeLoader;
@@ -32,6 +33,7 @@ public class Samurai {
 
         CommandManager commandManager = MinecraftServer.getCommandManager();
         commandManager.register(new ListCommand());
+        commandManager.register(new MemoryCommand());
 
         initWorlds();
 
