@@ -47,7 +47,7 @@ public class MemoryCommand extends Command {
             value = v + "B";
         } else {
           int z = (63 - Long.numberOfLeadingZeros(v)) / 10;
-value = String.format("%.1f%s", (double) v / (1L << (z * 10)), "BKMGTPE".charAt(z));
+          value = String.format("%.1f%s", (double) v / (1L << (z * 10)), "BKMGTPE".charAt(z));
        }
 
         return MiniMessage.miniMessage().deserialize(color, Placeholder.unparsed("text", value));

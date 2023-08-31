@@ -14,10 +14,14 @@ repositories {
 dependencies {
     implementation("dev.hollowcube:minestom-ce:e9d0098418")
 
+    // World loaders
     implementation("dev.hollowcube:polar:1.3.1")
     implementation("com.github.CatDevz:SlimeLoader:master-SNAPSHOT")
 
     implementation("net.kyori:adventure-text-minimessage:4.13.1")
+
+    compileOnly("org.projectlombok:lombok:1.18.28")
+    annotationProcessor("org.projectlombok:lombok:1.18.28")
 }
 
 tasks.withType<Jar> {
