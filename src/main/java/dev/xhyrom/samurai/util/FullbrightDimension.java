@@ -1,5 +1,6 @@
 package dev.xhyrom.samurai.util;
 
+import lombok.experimental.UtilityClass;
 import net.minestom.server.MinecraftServer;
 import net.minestom.server.utils.NamespaceID;
 import net.minestom.server.world.DimensionType;
