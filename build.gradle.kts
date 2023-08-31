@@ -16,6 +16,8 @@ dependencies {
 
     implementation("dev.hollowcube:polar:1.3.1")
     implementation("com.github.CatDevz:SlimeLoader:master-SNAPSHOT")
+
+    implementation("net.kyori:adventure-text-minimessage:4.13.1")
 }
 
 tasks.withType<Jar> {
