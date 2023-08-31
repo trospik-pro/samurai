@@ -23,12 +23,11 @@ public class PlayerLogin implements EventListener<PlayerLoginEvent> {
         Player player = event.getPlayer();
         event.setSpawningInstance(Samurai.instanceContainer);
         player.setRespawnPoint(new Pos(88, 61, 88));
-        player.setGameMode(GameMode.CREATIVE);
+        player.setGameMode(GameMode.ADVENTURE);
 
         // Tell players, and the log, that someone joined
         Component playerJoinMessage = player.getName().append(Component.text(" joined the server")).color(NamedTextColor.YELLOW);
         Audiences.players().sendMessage(playerJoinMessage);
-        //logger.info(ANSIComponentSerializer.ansi().serialize(playerJoinMessage));
 
         // Set team
         player.setTeam(MinecraftServer.getTeamManager().getTeam("noCollision"));
