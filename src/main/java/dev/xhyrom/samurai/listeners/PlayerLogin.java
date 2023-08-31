@@ -12,8 +12,6 @@ import net.minestom.server.event.EventListener;
 import net.minestom.server.event.player.PlayerLoginEvent;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Objects;
-
 public class PlayerLogin implements EventListener<PlayerLoginEvent> {
     @Override
     public @NotNull Class<PlayerLoginEvent> eventType() {
@@ -24,8 +22,8 @@ public class PlayerLogin implements EventListener<PlayerLoginEvent> {
     public @NotNull Result run(@NotNull PlayerLoginEvent event) {
         Player player = event.getPlayer();
         event.setSpawningInstance(Samurai.instanceContainer);
-        player.setRespawnPoint(new Pos(0, 100, 0));
-        player.setGameMode(GameMode.ADVENTURE);
+        player.setRespawnPoint(new Pos(88, 61, 88));
+        player.setGameMode(GameMode.CREATIVE);
 
         // Tell players, and the log, that someone joined
         Component playerJoinMessage = player.getName().append(Component.text(" joined the server")).color(NamedTextColor.YELLOW);
