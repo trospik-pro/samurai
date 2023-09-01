@@ -19,7 +19,7 @@ public final class Listeners {
                 .addListener(new PlayerSpawn())
                 .addListener(new InventoryPreClick())
                 .addListener(new ItemDrop())
-                .addListener(new PlayerChangeHeldSlot())
+                .addListener(new PlayerSwapItem())
                 .addListener(new PlayerUseItem())
                 .addListener(new AsyncPlayerPreLogin())
                 .addListener(new ServerListPing());
