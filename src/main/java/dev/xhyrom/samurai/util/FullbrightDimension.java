@@ -6,7 +6,7 @@ import net.minestom.server.utils.NamespaceID;
 import net.minestom.server.world.DimensionType;
 
 @UtilityClass
-public class FullbrightDimension {
+public final class FullbrightDimension {
     public static final DimensionType INSTANCE = DimensionType.builder(NamespaceID.from("minestom:full_bright"))
             .ambientLight(2.0f)
             .build();

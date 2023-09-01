@@ -2,6 +2,7 @@ package dev.xhyrom.samurai.listeners;
 
 import dev.xhyrom.samurai.Samurai;
 import dev.xhyrom.samurai.SamuraiBootstrap;
+import dev.xhyrom.samurai.team.Teams;
 import net.minestom.server.MinecraftServer;
 import net.minestom.server.coordinate.Pos;
 import net.minestom.server.entity.GameMode;
@@ -26,7 +27,7 @@ public class PlayerLogin implements EventListener<PlayerLoginEvent> {
         player.setGameMode(GameMode.ADVENTURE);
 
         // Set team
-        player.setTeam(MinecraftServer.getTeamManager().getTeam("nc"));
+        player.setTeam(Teams.NO_COLLISIONS);
         return Result.SUCCESS;
     }
 }

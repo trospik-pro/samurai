@@ -10,13 +10,14 @@ import dev.xhyrom.samurai.util.FullbrightDimension;
 import dev.xhyrom.samurai.world.Worlds;
 import eu.okaeri.configs.ConfigManager;
 import eu.okaeri.configs.yaml.snakeyaml.YamlSnakeYamlConfigurer;
+import lombok.experimental.UtilityClass;
 import net.minestom.server.MinecraftServer;
 import net.minestom.server.instance.InstanceContainer;
-import net.minestom.server.network.packet.server.play.TeamsPacket;
 
 import java.nio.file.Path;
 import java.util.logging.Logger;
 
+@UtilityClass
 public final class Samurai {
     public static MinecraftServer server;
     public static InstanceContainer instance;
@@ -39,11 +40,6 @@ public final class Samurai {
         instance = MinecraftServer.getInstanceManager().createInstanceContainer(FullbrightDimension.INSTANCE);
 
         MinecraftServer.setBrandName(config.brand);
-
-        MinecraftServer.getTeamManager().createBuilder("nc")
-                .collisionRule(TeamsPacket.CollisionRule.NEVER)
-                .updateTeamPacket()
-                .build();
 
         Commands.init();
         Listeners.init();
