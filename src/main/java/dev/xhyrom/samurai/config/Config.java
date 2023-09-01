@@ -4,6 +4,7 @@ import dev.xhyrom.samurai.entity.Hologram;
 import dev.xhyrom.samurai.entity.NPC;
 import eu.okaeri.configs.OkaeriConfig;
 import eu.okaeri.configs.annotation.Comment;
+import eu.okaeri.configs.annotation.Variable;
 import net.minestom.server.coordinate.Pos;
 import net.minestom.server.coordinate.Vec;
 
@@ -15,6 +16,10 @@ public class Config extends OkaeriConfig {
 
     @Comment("The brand of the server")
     public String brand = "Samurai";
+
+    @Comment("Maximum number of players")
+    @Variable("max-players")
+    public int maxPlayers = 500;
 
     @Comment("Spawn location")
     public Pos spawn = new Pos(84, 61, 84, -39.3f, 1.6f);
