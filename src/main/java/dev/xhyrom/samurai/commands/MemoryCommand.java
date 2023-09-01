@@ -24,7 +24,7 @@ public class MemoryCommand extends Command {
             sender.sendMessage(MiniMessage.miniMessage().deserialize(
                     """
                             <gradient:#1E9AFE:#60DFCD><title></gradient> <white>• Ram usage details:
-                            <white>Ram Usage:</white> <used><dark_gray>/</dark_gray><xmx> <dark_gray>(</dark_gray><gray><percent></gray><dark_gray>)</dark_gray>
+                            <white>Usage:</white> <used><dark_gray>/</dark_gray><xmx> <dark_gray>(</dark_gray><gray><percent></gray><dark_gray>)</dark_gray>
                             <white>Allocated:</white> <allocated>
                             <white>Free:</white> <free>""",
                     Placeholder.parsed("title", SamuraiBootstrap.PACKAGE.getImplementationTitle()),
