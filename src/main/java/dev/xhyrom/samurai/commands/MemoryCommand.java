@@ -21,9 +21,11 @@ public class MemoryCommand extends Command {
             float percentage = Math.max(Math.min((float) used / xmx, 1.0F), 0.0F);
 
             sender.sendMessage(MiniMessage.miniMessage().deserialize(
-                    "<white>Ram Usage:</white> <used><dark_gray>/</dark_gray><xmx> <dark_gray>(</dark_gray><gray><percent></gray><dark_gray>)</dark_gray>" + "\n" +
-                            "<white>Allocated:</white> <allocated>" + "\n" +
-                            "<white>Free:</white> <free>",
+                    """
+                            <gradient:#1E9AFE:#60DFCD><title></gradient> <white>• Ram usage details:
+                            <white>Ram Usage:</white> <used><dark_gray>/</dark_gray><xmx> <dark_gray>(</dark_gray><gray><percent></gray><dark_gray>)</dark_gray>
+                            <white>Allocated:</white> <allocated>
+                            <white>Free:</white> <free>""",
                     Placeholder.component("allocated", format(percentage, heapMemoryUsage.getCommitted())),
                     Placeholder.component("free", format(percentage, free)),
                     Placeholder.unparsed("percent", ((int) (percentage * 100)) + "%"),
