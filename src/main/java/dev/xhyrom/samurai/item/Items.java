@@ -49,7 +49,10 @@ public class Items {
             }
             case 8 -> {
                 PlayerHider.Action action = PlayerHider.toggle(player);
-                if (action == PlayerHider.Action.HIDE) {
+
+                if (action == PlayerHider.Action.COOLDOWN_HIT) {
+                    player.sendMessage(miniMessage.deserialize("<red>Please wait before doing that again!"));
+                } else if (action == PlayerHider.Action.HIDE) {
                     player.getInventory().setItemStack(8, PLAYER_HIDER_SHOW);
                 } else {
                     player.getInventory().setItemStack(8, PLAYER_HIDER_HIDE);

@@ -31,6 +31,7 @@ dependencies {
     // World loaders
     implementation("dev.hollowcube:polar:1.3.1")
 
+    implementation("com.google.guava:guava:32.1.2-jre")
     implementation("net.kyori:adventure-text-minimessage:4.13.1")
 
     compileOnly("org.projectlombok:lombok:1.18.28")
