@@ -29,7 +29,7 @@ public final class PlayerHider {
 
     private void show(Player player) {
         for (Player p : MinecraftServer.getConnectionManager().getOnlinePlayers()) {
-            if (p.getUuid() != player.getUuid()) {
+            if (p.getUuid().equals(player.getUuid())) {
                 p.updateNewViewer(player);
             }
         }
@@ -37,7 +37,7 @@ public final class PlayerHider {
 
     private void hide(Player player) {
         for (Player p : MinecraftServer.getConnectionManager().getOnlinePlayers()) {
-            if (p.getUuid() != player.getUuid()) {
+            if (p.getUuid().equals(player.getUuid())) {
                 p.updateOldViewer(player);
             }
         }

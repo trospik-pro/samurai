@@ -8,7 +8,7 @@ import net.minestom.server.command.builder.Command;
 
 public class VersionCommand extends Command {
     public VersionCommand() {
-        super("version");
+        super("version", "ver");
 
         setDefaultExecutor((sender, context) -> sender.sendMessage(MiniMessage.miniMessage().deserialize(
                 "<gradient:#1E9AFE:#60DFCD><bold><title></bold></gradient> <gradient:#60DFCD:#1E9AFE><version></gradient>" +
