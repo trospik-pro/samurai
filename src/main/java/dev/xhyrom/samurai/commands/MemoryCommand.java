@@ -1,6 +1,5 @@
 package dev.xhyrom.samurai.commands;
 
-import net.kyori.adventure.bossbar.BossBar;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
@@ -22,7 +21,9 @@ public class MemoryCommand extends Command {
             float percentage = Math.max(Math.min((float) used / xmx, 1.0F), 0.0F);
 
             sender.sendMessage(MiniMessage.miniMessage().deserialize(
-                    "<green>Ram Usage: <used>/<xmx> (<percent>)\n<green>Allocated: <allocated>\n<green>Free: <free>",
+                    "<#1E9AFE>Ram Usage: <used><dark_gray>/</dark_gray><xmx> <dark_gray>(</dark_gray><percent><dark_gray>)</dark_gray>" + "\n" +
+                            "Allocated: <allocated>" + "\n" +
+                            "Free: <free></#1E9AFE>",
                     Placeholder.component("allocated", format(percentage, heapMemoryUsage.getCommitted())),
                     Placeholder.component("free", format(percentage, free)),
                     Placeholder.unparsed("percent", ((int) (percentage * 100)) + "%"),

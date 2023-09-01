@@ -1,6 +1,6 @@
 package dev.xhyrom.samurai.commands;
 
-import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.minestom.server.MinecraftServer;
 import net.minestom.server.command.builder.Command;
 import net.minestom.server.entity.Player;
@@ -15,7 +15,9 @@ public class ListCommand extends Command {
             final Collection<Player> players = MinecraftServer.getConnectionManager().getOnlinePlayers();
             final int playerCount = players.size();
 
-            sender.sendMessage(Component.text("Total players: " + playerCount));
+            sender.sendMessage(MiniMessage.miniMessage().deserialize(
+                    "<gradient:#1E9AFE:#60DFCD>Total players: " + playerCount
+            ));
         });
     }
 }

@@ -6,7 +6,6 @@ import eu.okaeri.configs.OkaeriConfig;
 import eu.okaeri.configs.annotation.Comment;
 import net.minestom.server.coordinate.Pos;
 import net.minestom.server.coordinate.Vec;
-import net.minestom.server.entity.PlayerSkin;
 
 import java.util.List;
 
@@ -34,4 +33,9 @@ public class Config extends OkaeriConfig {
                     new Pos(90, 61, 91, 137.4f, 0.0f)
             ).skin("general_kubo")
     );
+
+    @Comment("Debug mode")
+    @Comment("Enables few commands and other features for debugging")
+    @Comment("This should be disabled in production")
+    public boolean debug = true;
 }

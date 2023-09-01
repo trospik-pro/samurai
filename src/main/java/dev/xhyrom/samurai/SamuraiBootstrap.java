@@ -6,6 +6,8 @@ import java.nio.file.Path;
 import java.util.logging.Logger;
 
 public class SamuraiBootstrap {
+    public static final Package PACKAGE = SamuraiBootstrap.class.getPackage();
+
     public static void main(String[] args) {
         Logger.getLogger("Samurai").info("Starting Samurai");
 

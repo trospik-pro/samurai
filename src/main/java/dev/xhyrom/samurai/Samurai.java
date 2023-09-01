@@ -39,7 +39,7 @@ public final class Samurai {
         server = MinecraftServer.init();
         instance = MinecraftServer.getInstanceManager().createInstanceContainer(FullbrightDimension.INSTANCE);
 
-        MinecraftServer.setBrandName(config.brand);
+        MinecraftServer.setBrandName(config.brand + " " + (config.debug ? "DEBUG" : ""));
 
         Commands.init();
         Listeners.init();

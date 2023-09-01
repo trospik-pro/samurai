@@ -1,10 +1,18 @@
+import java.io.ByteArrayOutputStream
+import java.time.LocalDate
+
 plugins {
     id("java")
     id("com.github.johnrengelman.shadow") version "8.1.1"
 }
 
+val majorVersion = 0
+val minorVersion = 1
+val patchVersion = determinePatchVersion()
+val commitHash = determineCommitHash()
+
 group = "dev.xhyrom.samurai"
-version = "0.1.0"
+version = "$majorVersion.$minorVersion.$patchVersion+$commitHash"
 
 repositories {
     mavenCentral()
@@ -31,7 +39,18 @@ dependencies {
 }
 
 tasks.withType<Jar> {
+    val date = LocalDate.now()
+
     manifest {
+        attributes(
+            "Main-Class" to "dev.xhyrom.samurai.SamuraiBootstrap",
+            "Implementation-Title" to "Samurai",
+            "Implementation-Version" to "git-Samurai-$version",
+            "Implementation-Vendor" to date,
+            "Specification-Title" to "Samurai",
+            "Specification-Version" to "git-Samurai-$version",
+            "Specification-Vendor" to date
+        )
         attributes["Main-Class"] = "dev.xhyrom.samurai.SamuraiBootstrap"
     }
 }
@@ -52,4 +71,32 @@ tasks.register("runServer") {
             commandLine("java", "-jar", targetJar.absolutePath)
         }
     }
+}
+
+fun determinePatchVersion(): Int {
+    val tagInfo = ByteArrayOutputStream()
+
+    return try {
+        exec {
+            commandLine("git", "describe", "--tags")
+            standardOutput = tagInfo
+        }
+
+        val result = tagInfo.toString()
+
+        if (result.contains("-")) result.split("-")[1].toInt() else 0
+    } catch (e: Exception) {
+        0
+    }
+}
+
+fun determineCommitHash(): String {
+    val commitHashInfo = ByteArrayOutputStream()
+
+    exec {
+        commandLine("git", "rev-parse", "--short", "HEAD")
+        standardOutput = commitHashInfo
+    }
+
+    return commitHashInfo.toString().trim()
 }
