@@ -1,86 +1,61 @@
 package dev.xhyrom.samurai;
 
-import dev.xhyrom.samurai.commands.ListCommand;
-import dev.xhyrom.samurai.commands.MemoryCommand;
-import dev.xhyrom.samurai.listeners.PlayerLogin;
+import dev.xhyrom.okaeri.serdes.minestom.SerdesMinestom;
+import dev.xhyrom.samurai.commands.Commands;
+import dev.xhyrom.samurai.config.Config;
+import dev.xhyrom.samurai.config.serializers.SerdesCustom;
+import dev.xhyrom.samurai.entity.Entities;
+import dev.xhyrom.samurai.listeners.Listeners;
 import dev.xhyrom.samurai.util.FullbrightDimension;
-import gg.astromc.slimeloader.loader.SlimeLoader;
-import gg.astromc.slimeloader.source.FileSlimeSource;
+import dev.xhyrom.samurai.world.Worlds;
+import eu.okaeri.configs.ConfigManager;
+import eu.okaeri.configs.yaml.snakeyaml.YamlSnakeYamlConfigurer;
 import net.minestom.server.MinecraftServer;
-import net.minestom.server.command.CommandManager;
-import net.minestom.server.event.Event;
-import net.minestom.server.event.EventFilter;
-import net.minestom.server.event.EventNode;
-import net.minestom.server.event.GlobalEventHandler;
 import net.minestom.server.instance.InstanceContainer;
 import net.minestom.server.network.packet.server.play.TeamsPacket;
 
-import java.io.File;
-import java.net.URISyntaxException;
 import java.nio.file.Path;
+import java.util.logging.Logger;
 
-public class Samurai {
-    public static InstanceContainer instanceContainer;
+public final class Samurai {
+    public static MinecraftServer server;
+    public static InstanceContainer instance;
+    public static Config config;
+    public static Logger logger = Logger.getLogger("Samurai");
 
-    public static void main(String[] args) {
-        MinecraftServer minecraftServer = MinecraftServer.init();
+    public static void init() {
+        config = ConfigManager.create(Config.class, it -> {
+            Path path = SamuraiBootstrap.getPath("config");
+            path.toFile().mkdirs();
 
-        GlobalEventHandler globalEventHandler = MinecraftServer.getGlobalEventHandler();
-        EventNode<Event> entityNode = EventNode.type("listeners", EventFilter.ALL);
-        entityNode
-                .addListener(new PlayerLogin());
-        globalEventHandler.addChild(entityNode);
+            it.withConfigurer(new YamlSnakeYamlConfigurer(), new SerdesMinestom(), new SerdesCustom());
+            it.withBindFile(path.resolve("config.yml"));
+            it.withRemoveOrphans(true);
+            it.saveDefaults();
+            it.load(true);
+        });
 
-        CommandManager commandManager = MinecraftServer.getCommandManager();
-        commandManager.register(new ListCommand());
-        commandManager.register(new MemoryCommand());
+        server = MinecraftServer.init();
+        instance = MinecraftServer.getInstanceManager().createInstanceContainer(FullbrightDimension.INSTANCE);
 
-        initWorlds();
+        MinecraftServer.setBrandName(config.brand);
 
-        // Create team for no collision
-        MinecraftServer.getTeamManager().createBuilder("noCollision")
+        MinecraftServer.getTeamManager().createBuilder("nc")
                 .collisionRule(TeamsPacket.CollisionRule.NEVER)
                 .updateTeamPacket()
                 .build();
 
-        // Start the server on port 25565
-        minecraftServer.start("0.0.0.0", 25565);
+        Commands.init();
+        Listeners.init();
+        Worlds.init();
+        Entities.init();
     }
 
-    public static Path getPath(String path) {
-        try {
-            return Path.of(
-                            new File(
-                                    Samurai.class
-                                            .getProtectionDomain()
-                                            .getCodeSource()
-                                            .getLocation()
-                                            .toURI()
-                            ).getPath()
-                    ).getParent()
-                    .resolve(path);
-        } catch (URISyntaxException e) {
-            throw new RuntimeException(e);
-        }
-    }
+    public static void run() {
+        String[] address = config.address.split(":");
+        String ip = address[0];
+        int port = address.length > 1 ? Integer.parseInt(address[1]) : 25565;
 
-    private static void initWorlds() {
-        // Fail and stop server if hub doesn't exist
-        if (!getPath("config/worlds/hub.polar").toFile().exists()) {
-            System.out.println("Missing hub world, please place a Polar world at ./config/worlds/hub.polar and restart the server");
-            MinecraftServer.stopCleanly();
-            return;
-        }
-
-        // Load hub now we know it exists
-        instanceContainer = MinecraftServer.getInstanceManager().createInstanceContainer(FullbrightDimension.INSTANCE);/*MinecraftServer.getInstanceManager().createInstanceContainer(
-                FullbrightDimension.INSTANCE,
-                new PolarLoader(getPath("config/worlds/hub.polar"))
-        );*/
-
-        instanceContainer.setChunkLoader(new SlimeLoader(instanceContainer, new FileSlimeSource(getPath("config/worlds/hub.slime").toFile()), true));
-
-        System.out.println("Loaded Hub world");
-        instanceContainer.setTimeRate(0);
+        server.start(ip, port);
     }
 }

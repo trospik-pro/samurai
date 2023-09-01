@@ -9,10 +9,16 @@ version = "0.1.0"
 repositories {
     mavenCentral()
     maven("https://jitpack.io")
+    maven("https://storehouse.okaeri.eu/repository/maven-public/")
 }
 
 dependencies {
+    // Server implementation
     implementation("dev.hollowcube:minestom-ce:e9d0098418")
+
+    // Config loader
+    implementation("eu.okaeri:okaeri-configs-yaml-snakeyaml:5.0.0-beta.5")
+    implementation(project(":okaeri-serdes-minestom"))
 
     // World loaders
     implementation("dev.hollowcube:polar:1.3.1")
@@ -26,7 +32,7 @@ dependencies {
 
 tasks.withType<Jar> {
     manifest {
-        attributes["Main-Class"] = "dev.xhyrom.samurai.Samurai"
+        attributes["Main-Class"] = "dev.xhyrom.samurai.SamuraiBootstrap"
     }
 }
 

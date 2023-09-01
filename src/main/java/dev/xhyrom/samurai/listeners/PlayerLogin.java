@@ -1,6 +1,7 @@
 package dev.xhyrom.samurai.listeners;
 
 import dev.xhyrom.samurai.Samurai;
+import dev.xhyrom.samurai.SamuraiBootstrap;
 import net.minestom.server.MinecraftServer;
 import net.minestom.server.coordinate.Pos;
 import net.minestom.server.entity.GameMode;
@@ -19,13 +20,13 @@ public class PlayerLogin implements EventListener<PlayerLoginEvent> {
     public @NotNull Result run(@NotNull PlayerLoginEvent event) {
         Player player = event.getPlayer();
 
-        event.setSpawningInstance(Samurai.instanceContainer);
+        event.setSpawningInstance(Samurai.instance);
 
-        player.setRespawnPoint(new Pos(88, 61, 88));
+        player.setRespawnPoint(Samurai.config.spawn);
         player.setGameMode(GameMode.ADVENTURE);
 
         // Set team
-        player.setTeam(MinecraftServer.getTeamManager().getTeam("noCollision"));
+        player.setTeam(MinecraftServer.getTeamManager().getTeam("nc"));
         return Result.SUCCESS;
     }
 }
