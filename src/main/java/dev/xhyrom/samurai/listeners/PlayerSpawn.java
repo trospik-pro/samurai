@@ -19,6 +19,8 @@ public class PlayerSpawn implements EventListener<PlayerSpawnEvent> {
     public @NotNull Result run(@NotNull PlayerSpawnEvent event) {
         Player player = event.getPlayer();
 
+        player.setReducedDebugScreenInformation(true);
+
         for (UUID uniqueId : PlayerHider.getWantHiddenPlayers()) {
             player.updateOldViewer(MinecraftServer.getConnectionManager().getPlayer(uniqueId));
         }
