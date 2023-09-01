@@ -23,6 +23,10 @@ public class Config extends OkaeriConfig {
 
     @Comment("Spawn location")
     public Pos spawn = new Pos(84, 61, 84, -39.3f, 1.6f);
+
+    @Comment("World border config")
+    public WorldBorderConfig worldBorder = new WorldBorderConfig();
+
     @Comment("Holograms")
     public List<Hologram> holograms = List.of(
             new Hologram(

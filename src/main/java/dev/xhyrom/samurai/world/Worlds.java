@@ -4,6 +4,7 @@ import dev.xhyrom.samurai.Samurai;
 import dev.xhyrom.samurai.SamuraiBootstrap;
 import lombok.experimental.UtilityClass;
 import net.hollowcube.polar.PolarLoader;
+import net.minestom.server.instance.WorldBorder;
 
 import java.io.File;
 import java.io.IOException;
@@ -22,7 +23,14 @@ public final class Worlds {
         try {
             Samurai.instance.setChunkLoader(new PolarLoader(worldPath));
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException("Failed to load hub world", e);
+        }
+
+        {
+            WorldBorder border = Samurai.instance.getWorldBorder();
+
+            border.setCenter(Samurai.config.worldBorder.x,Samurai.config.worldBorder.z);
+            border.setDiameter(Samurai.config.worldBorder.diameter);
         }
 
         Samurai.instance.setTime(0);
