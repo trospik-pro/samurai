@@ -1,10 +1,8 @@
 package dev.xhyrom.samurai.listeners;
 
 import dev.xhyrom.samurai.Samurai;
-import dev.xhyrom.samurai.SamuraiBootstrap;
+import dev.xhyrom.samurai.item.Items;
 import dev.xhyrom.samurai.team.Teams;
-import net.minestom.server.MinecraftServer;
-import net.minestom.server.coordinate.Pos;
 import net.minestom.server.entity.GameMode;
 import net.minestom.server.entity.Player;
 import net.minestom.server.event.EventListener;
@@ -26,8 +24,11 @@ public class PlayerLogin implements EventListener<PlayerLoginEvent> {
         player.setRespawnPoint(Samurai.config.spawn);
         player.setGameMode(GameMode.ADVENTURE);
 
+        Items.give(player);
+
         // Set team
         player.setTeam(Teams.NO_COLLISIONS);
+
         return Result.SUCCESS;
     }
 }

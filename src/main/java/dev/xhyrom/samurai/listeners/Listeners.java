@@ -14,7 +14,11 @@ public final class Listeners {
         EventNode<Event> entityNode = EventNode.type("listeners", EventFilter.ALL);
 
         entityNode
-                .addListener(new PlayerLogin());
+                .addListener(new PlayerLogin())
+                .addListener(new PlayerDisconnect())
+                .addListener(new PlayerSpawn())
+                .addListener(new InventoryPreClick())
+                .addListener(new PlayerUseItem());
 
         globalEventHandler.addChild(entityNode);
     }

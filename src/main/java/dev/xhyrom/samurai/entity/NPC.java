@@ -37,6 +37,7 @@ public class NPC extends EntityCreature {
         meta.setLeftLegEnabled(true);
         meta.setRightLegEnabled(true);
         meta.setHatEnabled(true);
+        meta.setHasNoGravity(true);
     }
 
     public String skinName() {
