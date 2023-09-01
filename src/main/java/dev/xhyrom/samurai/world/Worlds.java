@@ -19,7 +19,6 @@ public final class Worlds {
             throw new RuntimeException("Missing hub world, please place a Polar world at " + worldPath + " and restart the server");
         }
 
-        /*Samurai.instance.setChunkLoader(new SlimeLoader(Samurai.instance, new FileSlimeSource(world), true));*/
         try {
             Samurai.instance.setChunkLoader(new PolarLoader(worldPath));
         } catch (IOException e) {
