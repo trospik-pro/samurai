@@ -16,7 +16,7 @@ public class ListCommand extends Command {
             final int playerCount = players.size();
 
             sender.sendMessage(MiniMessage.miniMessage().deserialize(
-                    "<gradient:#1E9AFE:#60DFCD>Total players: " + playerCount
+                    "<gradient:#1E9AFE:#60DFCD><title></gradient> <white>• <white>There are <gradient:#1E9AFE:#60DFCD><online></gradient> <white>of a max of <gradient:#1E9AFE:#60DFCD><max></gradient> <white>players online" + playerCount
             ));
         });
     }
