@@ -15,6 +15,7 @@ public final class Commands {
         CommandManager commandManager = MinecraftServer.getCommandManager();
         GlobalEventHandler globalEventHandler = MinecraftServer.getGlobalEventHandler();
 
+        commandManager.register(new ExtensionsCommand());
         commandManager.register(new ListCommand());
         commandManager.register(new MemoryCommand());
         commandManager.register(new PerformanceCommand(

@@ -21,10 +21,10 @@ public class ListCommand extends Command {
             final int playerCount = players.size();
 
             sender.sendMessage(MiniMessage.miniMessage().deserialize(
-                    "<gradient:#1E9AFE:#60DFCD><title></gradient> <white>• <white>There are <gradient:#1E9AFE:#60DFCD><online></gradient> <white>of a max of <gradient:#1E9AFE:#60DFCD><max></gradient> <white>players online",
-                    Placeholder.parsed("title", SamuraiBootstrap.PACKAGE.getImplementationTitle()),
-                    Placeholder.parsed("online", String.valueOf(playerCount)),
-                    Placeholder.parsed("max", String.valueOf(Samurai.config.maxPlayers))
+                    "<gradient:#1E9AFE:#60DFCD><title> <white>• There are </white><online> <white>of a max of </white><max> <white>players online: ",
+                    Placeholder.unparsed("title", SamuraiBootstrap.PACKAGE.getImplementationTitle()),
+                    Placeholder.unparsed("online", String.valueOf(playerCount)),
+                    Placeholder.unparsed("max", String.valueOf(Samurai.config.maxPlayers))
             ));
         });
 
@@ -34,11 +34,11 @@ public class ListCommand extends Command {
             final int playerCount = players.size();
 
             sender.sendMessage(MiniMessage.miniMessage().deserialize(
-                    "<gradient:#1E9AFE:#60DFCD><title></gradient> <white>• <white>There are <gradient:#1E9AFE:#60DFCD><online></gradient> <white>of a max of <gradient:#1E9AFE:#60DFCD><max></gradient> <white>players online: <gray><players>",
-                    Placeholder.parsed("title", SamuraiBootstrap.PACKAGE.getImplementationTitle()),
-                    Placeholder.parsed("online", String.valueOf(playerCount)),
-                    Placeholder.parsed("max", String.valueOf(Samurai.config.maxPlayers)),
-                    Placeholder.parsed("players", players.stream().map(Player::getUsername).reduce((a, b) -> a + ", " + b).orElse("none"))
+                    "<gradient:#1E9AFE:#60DFCD><title> <white>• There are </white><online> <white>of a max of </white><max> <white>players online: <gray><players>",
+                    Placeholder.unparsed("title", SamuraiBootstrap.PACKAGE.getImplementationTitle()),
+                    Placeholder.unparsed("online", String.valueOf(playerCount)),
+                    Placeholder.unparsed("max", String.valueOf(Samurai.config.maxPlayers)),
+                    Placeholder.unparsed("players", players.stream().map(Player::getUsername).reduce((a, b) -> a + ", " + b).orElse("none"))
             ));
         }, literalArgument);
     }
