@@ -16,7 +16,7 @@ public final class Worlds {
         File world = worldPath.toFile();
 
         if (!world.exists()) {
-            throw new RuntimeException("Missing hub world, please place a Slime world at " + worldPath + " and restart the server");
+            throw new RuntimeException("Missing hub world, please place a Polar world at " + worldPath + " and restart the server");
         }
 
         /*Samurai.instance.setChunkLoader(new SlimeLoader(Samurai.instance, new FileSlimeSource(world), true));*/
@@ -29,6 +29,6 @@ public final class Worlds {
         Samurai.instance.setTime(0);
         Samurai.instance.setTimeRate(0);
 
-        Samurai.logger.info("Loaded Hub world");
+        Samurai.logger.info("Successfully loaded world: " + worldPath);
     }
 }
