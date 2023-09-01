@@ -48,8 +48,6 @@ public class Items {
                 // Store
             }
             case 8 -> {
-                player.sendMessage(miniMessage.deserialize("<red>Coming soon8!"));
-
                 PlayerHider.Action action = PlayerHider.toggle(player);
                 if (action == PlayerHider.Action.HIDE) {
                     player.getInventory().setItemStack(8, PLAYER_HIDER_SHOW);
