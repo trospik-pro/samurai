@@ -21,9 +21,9 @@ public class MemoryCommand extends Command {
             float percentage = Math.max(Math.min((float) used / xmx, 1.0F), 0.0F);
 
             sender.sendMessage(MiniMessage.miniMessage().deserialize(
-                    "<#1E9AFE>Ram Usage: <used><dark_gray>/</dark_gray><xmx> <dark_gray>(</dark_gray><percent><dark_gray>)</dark_gray>" + "\n" +
-                            "Allocated: <allocated>" + "\n" +
-                            "Free: <free></#1E9AFE>",
+                    "<white>Ram Usage:</white> <used><dark_gray>/</dark_gray><xmx> <dark_gray>(</dark_gray><gray><percent></gray><dark_gray>)</dark_gray>" + "\n" +
+                            "<white>Allocated:</white> <allocated>" + "\n" +
+                            "<white>Free:</white> <free>",
                     Placeholder.component("allocated", format(percentage, heapMemoryUsage.getCommitted())),
                     Placeholder.component("free", format(percentage, free)),
                     Placeholder.unparsed("percent", ((int) (percentage * 100)) + "%"),
@@ -36,11 +36,11 @@ public class MemoryCommand extends Command {
     public Component format(float percent, long v) {
         String color;
         if (percent < 0.60F) {
-            color = "<gradient:#55ff55:#00aa00><text></gradient>";
+            color = "<#7CB342><text></#7CB342>";
         } else if (percent < 0.85F) {
-            color = "<gradient:#ffff55:#ffaa00><text></gradient>";
+            color = "<#FFEC00><text></#FFEC00>";
         } else {
-            color = "<gradient:#ff5555:#aa0000><text></gradient>";
+            color = "<#E74C3C><text></#E74C3C>";
         }
 
         String value;
