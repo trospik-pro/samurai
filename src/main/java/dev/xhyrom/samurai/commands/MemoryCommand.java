@@ -1,5 +1,6 @@
 package dev.xhyrom.samurai.commands;
 
+import dev.xhyrom.samurai.SamuraiBootstrap;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
@@ -26,6 +27,7 @@ public class MemoryCommand extends Command {
                             <white>Ram Usage:</white> <used><dark_gray>/</dark_gray><xmx> <dark_gray>(</dark_gray><gray><percent></gray><dark_gray>)</dark_gray>
                             <white>Allocated:</white> <allocated>
                             <white>Free:</white> <free>""",
+                    Placeholder.parsed("title", SamuraiBootstrap.PACKAGE.getImplementationTitle()),
                     Placeholder.component("allocated", format(percentage, heapMemoryUsage.getCommitted())),
                     Placeholder.component("free", format(percentage, free)),
                     Placeholder.unparsed("percent", ((int) (percentage * 100)) + "%"),
