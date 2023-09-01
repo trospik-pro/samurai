@@ -23,6 +23,8 @@ public final class PlayerHider {
             return Action.COOLDOWN_HIT;
         }
 
+        cache.add(player.getUuid());
+
         if (wantHiddenPlayers.remove(player.getUuid())) {
             show(player);
 
