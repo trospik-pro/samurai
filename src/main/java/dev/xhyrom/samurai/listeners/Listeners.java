@@ -19,7 +19,8 @@ public final class Listeners {
                 .addListener(new PlayerSpawn())
                 .addListener(new InventoryPreClick())
                 .addListener(new PlayerUseItem())
-                .addListener(new AsyncPlayerPreLogin());
+                .addListener(new AsyncPlayerPreLogin())
+                .addListener(new ServerListPing());
 
         globalEventHandler.addChild(entityNode);
     }
