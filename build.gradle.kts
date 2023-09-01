@@ -63,6 +63,12 @@ tasks.register("runServer") {
         val runDir = File(project.projectDir.path, "run")
         runDir.mkdirs()
 
+        runDir.listFiles()?.forEach {
+            if (it.name.endsWith(".jar")) {
+                it.delete()
+            }
+        }
+
         val builtJar = tasks.getByName("shadowJar").outputs.files.singleFile
         val targetJar = File(runDir, builtJar.name)
 
