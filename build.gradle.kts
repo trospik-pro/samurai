@@ -23,6 +23,7 @@ repositories {
 dependencies {
     // Server implementation
     implementation("dev.hollowcube:minestom-ce:e9d0098418")
+    implementation("dev.hollowcube:minestom-ce-extensions:1.2.0")
 
     // Config loader
     implementation("eu.okaeri:okaeri-configs-yaml-snakeyaml:5.0.0-beta.5")

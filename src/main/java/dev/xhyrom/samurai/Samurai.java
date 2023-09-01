@@ -11,6 +11,7 @@ import dev.xhyrom.samurai.world.Worlds;
 import eu.okaeri.configs.ConfigManager;
 import eu.okaeri.configs.yaml.snakeyaml.YamlSnakeYamlConfigurer;
 import lombok.experimental.UtilityClass;
+import net.hollowcube.minestom.extensions.ExtensionBootstrap;
 import net.minestom.server.MinecraftServer;
 import net.minestom.server.instance.InstanceContainer;
 
@@ -19,7 +20,7 @@ import java.util.logging.Logger;
 
 @UtilityClass
 public final class Samurai {
-    public static MinecraftServer server;
+    public static ExtensionBootstrap server;
     public static InstanceContainer instance;
     public static Config config;
     public static Logger logger = Logger.getLogger("Samurai");
@@ -36,7 +37,7 @@ public final class Samurai {
             it.load(true);
         });
 
-        server = MinecraftServer.init();
+        server = ExtensionBootstrap.init();
         instance = MinecraftServer.getInstanceManager().createInstanceContainer(FullbrightDimension.INSTANCE);
 
         MinecraftServer.setBrandName(config.brand + " " + (config.debug ? "DEBUG" : ""));
