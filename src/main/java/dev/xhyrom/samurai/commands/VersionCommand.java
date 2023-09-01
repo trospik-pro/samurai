@@ -11,7 +11,7 @@ public class VersionCommand extends Command {
         super("version", "ver");
 
         setDefaultExecutor((sender, context) -> sender.sendMessage(MiniMessage.miniMessage().deserialize(
-                "<gradient:#1E9AFE:#60DFCD><bold><title></bold></gradient> <gradient:#60DFCD:#1E9AFE><version></gradient>" +
+                "<gradient:#1E9AFE:#60DFCD><title></gradient> <white>• <gradient:#60DFCD:#1E9AFE><version></gradient>" +
                 " <dark_gray>for <gradient:#60DFCD:#1E9AFE><minecraft_version>" +
                 " <dark_gray>protocol</dark_gray> <protocol></gradient>",
                 Placeholder.unparsed("title", SamuraiBootstrap.PACKAGE.getImplementationTitle()),
