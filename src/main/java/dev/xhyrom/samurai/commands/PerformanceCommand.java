@@ -1,9 +1,11 @@
 // Taken from https://github.com/emortalmc/minestom-core/blob/main/src/main/java/dev/emortal/minestom/core/module/core/performance/PerformanceCommand.java
 
-package dev.xhyrom.samurai.commands.performance;
+package dev.xhyrom.samurai.commands;
 
 import com.sun.management.GarbageCollectorMXBean;
 import com.sun.management.GcInfo;
+import dev.xhyrom.samurai.module.performance.RollingAverage;
+import dev.xhyrom.samurai.module.performance.TpsRollingAverage;
 import dev.xhyrom.samurai.util.DurationFormatter;
 import dev.xhyrom.samurai.util.ProgressBar;
 import net.kyori.adventure.text.Component;

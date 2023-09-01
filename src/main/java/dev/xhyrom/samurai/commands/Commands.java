@@ -1,7 +1,6 @@
 package dev.xhyrom.samurai.commands;
 
 import dev.xhyrom.samurai.Samurai;
-import dev.xhyrom.samurai.commands.performance.PerformanceCommand;
 import lombok.experimental.UtilityClass;
 import net.minestom.server.MinecraftServer;
 import net.minestom.server.command.CommandManager;

@@ -1,6 +1,6 @@
 // Taken from https://github.com/emortalmc/minestom-core/blob/main/src/main/java/dev/emortal/minestom/core/module/core/performance/TpsRollingAverage.java
 
-package dev.xhyrom.samurai.commands.performance;
+package dev.xhyrom.samurai.module.performance;
 
 import net.minestom.server.MinecraftServer;
 import org.jetbrains.annotations.NotNull;
