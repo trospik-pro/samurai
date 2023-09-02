@@ -1,6 +1,5 @@
 package dev.xhyrom.samurai.config;
 
-import com.google.common.collect.ImmutableList;
 import eu.okaeri.configs.OkaeriConfig;
 import eu.okaeri.configs.annotation.Comment;
 
@@ -11,7 +10,7 @@ public class ScoreboardConfig extends OkaeriConfig {
     public String title = "<gradient:#1e9afe:#60DFCD><bold>Samurai</bold></gradient>";
 
     @Comment("Scoreboard lines")
-    public List<String> lines = ImmutableList.of(
+    public List<String> lines = List.of(
             "",
             "<white>Name: <#1e9afe><papi:player>",
             "",
