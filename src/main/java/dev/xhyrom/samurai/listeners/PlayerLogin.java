@@ -23,6 +23,7 @@ public class PlayerLogin implements EventListener<PlayerLoginEvent> {
 
         player.setRespawnPoint(Samurai.config.spawn);
         player.setGameMode(GameMode.ADVENTURE);
+        player.setInvulnerable(true);
 
         Items.give(player);
 

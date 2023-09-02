@@ -24,6 +24,10 @@ public class Config extends OkaeriConfig {
     @Comment("Spawn location")
     public Pos spawn = new Pos(84, 61, 84, -39.3f, 1.6f);
 
+    @Comment("Minimal allowed Y")
+    @Variable("minimal-allowed-y")
+    public double minimalAllowedY = 150;
+
     @Comment("World border config")
     public WorldBorderConfig worldBorder = new WorldBorderConfig();
 
