@@ -3,6 +3,7 @@ package dev.xhyrom.samurai.world;
 import dev.xhyrom.samurai.Samurai;
 import dev.xhyrom.samurai.SamuraiBootstrap;
 import lombok.experimental.UtilityClass;
+import net.hollowcube.polar.PolarChunk;
 import net.hollowcube.polar.PolarLoader;
 import net.minestom.server.instance.WorldBorder;
 
@@ -21,7 +22,12 @@ public final class Worlds {
         }
 
         try {
-            Samurai.instance.setChunkLoader(new PolarLoader(worldPath));
+            PolarLoader loader = new PolarLoader(worldPath);
+            Samurai.instance.setChunkLoader(loader);
+            for (PolarChunk chunk : loader.world().chunks()) {
+                Samurai.instance.loadChunk(chunk.x(), chunk.z()).join();
+            }
+            Samurai.instance.enableAutoChunkLoad(false);
         } catch (IOException e) {
             throw new RuntimeException("Failed to load hub world", e);
         }
@@ -33,7 +39,6 @@ public final class Worlds {
             border.setDiameter(Samurai.config.worldBorder.diameter);
         }
 
-        Samurai.instance.setTime(0);
         Samurai.instance.setTimeRate(0);
 
         Samurai.logger.info("Successfully loaded world: " + worldPath);

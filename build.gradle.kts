@@ -30,7 +30,7 @@ dependencies {
     implementation(project(":okaeri-serdes-minestom"))
 
     // World loaders
-    implementation("dev.hollowcube:polar:1.3.1")
+    implementation("com.github.nindza-pro:polar:e00c38d8")
 
     implementation("com.google.guava:guava:32.1.2-jre")
     implementation("net.kyori:adventure-text-minimessage:4.13.1")

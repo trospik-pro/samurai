@@ -10,6 +10,7 @@ import net.minestom.server.world.biomes.Biome;
 public final class Dimension {
     public static final DimensionType INSTANCE = DimensionType.builder(NamespaceID.from("samurai:hub"))
             .ambientLight(2.0f)
+            .fixedTime(6000L)
             .build();
 
     public static final Biome JUNGLE = Biome.builder()
