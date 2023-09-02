@@ -20,6 +20,8 @@ public class PlayerSpawn implements EventListener<PlayerSpawnEvent> {
     public @NotNull Result run(@NotNull PlayerSpawnEvent event) {
         Player player = event.getPlayer();
 
+        player.setEnableRespawnScreen(false);
+
         if (!Samurai.config.debug)
             player.setReducedDebugScreenInformation(true);
 

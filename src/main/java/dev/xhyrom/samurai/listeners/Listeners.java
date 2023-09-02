@@ -21,6 +21,7 @@ public final class Listeners {
                 .addListener(new ItemDrop())
                 .addListener(new PlayerSwapItem())
                 .addListener(new PlayerUseItem())
+                .addListener(new PlayerDeath())
                 .addListener(new AsyncPlayerPreLogin())
                 .addListener(new ServerListPing());
 
