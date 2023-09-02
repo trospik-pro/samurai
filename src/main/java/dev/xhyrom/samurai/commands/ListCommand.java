@@ -16,6 +16,9 @@ public class ListCommand extends Command {
     public ListCommand() {
         super("list");
 
+        if (!Samurai.config.debug)
+            setCondition((sender, commandString) -> sender.hasPermission("samurai.command.list"));
+
         setDefaultExecutor((sender, context) -> {
             final Collection<Player> players = MinecraftServer.getConnectionManager().getOnlinePlayers();
             final int playerCount = players.size();
