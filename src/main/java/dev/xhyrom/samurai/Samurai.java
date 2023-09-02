@@ -13,6 +13,8 @@ import eu.okaeri.configs.yaml.snakeyaml.YamlSnakeYamlConfigurer;
 import lombok.experimental.UtilityClass;
 import net.hollowcube.minestom.extensions.ExtensionBootstrap;
 import net.minestom.server.MinecraftServer;
+import net.minestom.server.extras.MojangAuth;
+import net.minestom.server.extras.velocity.VelocityProxy;
 import net.minestom.server.instance.InstanceContainer;
 
 import java.nio.file.Path;
@@ -41,6 +43,11 @@ public final class Samurai {
         instance = MinecraftServer.getInstanceManager().createInstanceContainer(Dimension.INSTANCE);
 
         MinecraftServer.setBrandName(config.brand + " " + (config.debug ? "DEBUG" : ""));
+
+        switch (Samurai.config.mode.mode) {
+            case ONLINE -> MojangAuth.init();
+            case VELOCITY -> VelocityProxy.enable(Samurai.config.mode.secret);
+        }
 
         Commands.init();
         Listeners.init();

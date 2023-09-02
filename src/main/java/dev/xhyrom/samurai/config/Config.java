@@ -37,6 +37,9 @@ public class Config extends OkaeriConfig {
     @Comment("Scoreboard")
     public ScoreboardConfig scoreboard = new ScoreboardConfig();
 
+    @Comment("Mode")
+    public ModeConfig mode = new ModeConfig();
+
     @Comment("Holograms")
     public List<Hologram> holograms = List.of(
             new Hologram(
