@@ -5,6 +5,7 @@ import eu.okaeri.configs.serdes.DeserializationData;
 import eu.okaeri.configs.serdes.ObjectSerializer;
 import eu.okaeri.configs.serdes.SerializationData;
 import lombok.NonNull;
+import net.kyori.adventure.text.format.TextDecoration;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.minestom.server.item.ItemStack;
 import net.minestom.server.item.Material;
@@ -31,8 +32,8 @@ public class ItemStackSerializer implements ObjectSerializer<ItemStack> {
         List<String> lore = data.getAsList("lore", String.class);
 
         return ItemStack.builder(material)
-                .displayName(MiniMessage.miniMessage().deserialize(displayName))
-                .lore(lore.stream().map(s -> MiniMessage.miniMessage().deserialize(s)).toList())
+                .displayName(MiniMessage.miniMessage().deserialize(displayName).decoration(TextDecoration.ITALIC, false))
+                .lore(lore.stream().map(s -> MiniMessage.miniMessage().deserialize(s).decoration(TextDecoration.ITALIC, false)).toList())
                 .build();
     }
 }
