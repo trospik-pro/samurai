@@ -16,6 +16,8 @@ dependencies {
 
     implementation("eu.okaeri:okaeri-configs-core:5.0.0-beta.5")
 
+    compileOnly("net.kyori:adventure-text-minimessage:4.13.1")
+
     compileOnly("org.projectlombok:lombok:1.18.28")
     annotationProcessor("org.projectlombok:lombok:1.18.28")
 }
