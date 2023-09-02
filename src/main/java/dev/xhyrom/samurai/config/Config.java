@@ -44,8 +44,10 @@ public class Config extends OkaeriConfig {
     public List<Hologram> holograms = List.of(
             new Hologram(
                     new Pos(90, 61, 91, 135.5f, 11.1f),
-                    "<gradient:#1e9afe:#60DFCD>Samurai</gradient>" + "\n" +
-                            "<#60DFCD>Hub Implementation" + "\n"
+                    """
+                            <gradient:#1e9afe:#60DFCD>Samurai</gradient>
+                            <#60DFCD>Hub Implementation
+                            """
             ).shadow(true).bgColor(0x000000).scale(new Vec(3f, 3f, 3f))
     );
 

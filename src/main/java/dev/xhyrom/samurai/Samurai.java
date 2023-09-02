@@ -6,6 +6,7 @@ import dev.xhyrom.samurai.config.Config;
 import dev.xhyrom.samurai.config.serializers.SerdesCustom;
 import dev.xhyrom.samurai.entity.Entities;
 import dev.xhyrom.samurai.listeners.Listeners;
+import dev.xhyrom.samurai.module.PlayerScoreboard;
 import dev.xhyrom.samurai.util.Dimension;
 import dev.xhyrom.samurai.world.Worlds;
 import eu.okaeri.configs.ConfigManager;
@@ -60,6 +61,7 @@ public final class Samurai {
         Listeners.init();
         Worlds.init();
         Entities.init();
+        PlayerScoreboard.init();
     }
 
     public static void run() {

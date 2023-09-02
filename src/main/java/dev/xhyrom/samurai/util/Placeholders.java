@@ -6,6 +6,9 @@ import net.kyori.adventure.text.minimessage.tag.Tag;
 import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver;
 import net.minestom.server.entity.Player;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 @UtilityClass
 public class Placeholders {
     public TagResolver apply(Player player) {
@@ -13,8 +16,18 @@ public class Placeholders {
                 "papi",
                 (tag, attributes) -> {
                     String name = tag.popOr("requires name").value();
-                    if (name.equals("player")) {
-                        return Tag.selfClosingInserting(Component.text(player.getUsername()));
+                    switch (name.toLowerCase()) {
+                        case "player" -> {
+                            return Tag.selfClosingInserting(Component.text(player.getUsername()));
+                        }
+                        case "date" -> {
+                            String format = tag.pop().value();
+
+                            Date date = new Date();
+                            SimpleDateFormat dateFormat = new SimpleDateFormat(format);
+
+                            return Tag.selfClosingInserting(Component.text(dateFormat.format(date)));
+                        }
                     }
 
                     return Tag.selfClosingInserting(Component.text(""));

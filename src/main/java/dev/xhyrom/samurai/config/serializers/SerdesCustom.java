@@ -8,5 +8,7 @@ public class SerdesCustom implements OkaeriSerdesPack {
     public void register(SerdesRegistry registry) {
         registry.register(new HologramSerializer());
         registry.register(new NPCSerializer());
+        registry.register(new ScoreboardLineSerializer());
+        registry.register(new ScoreboardLineGroupSerializer());
     }
 }
