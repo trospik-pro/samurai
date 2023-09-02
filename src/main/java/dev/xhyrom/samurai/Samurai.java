@@ -14,6 +14,7 @@ import lombok.experimental.UtilityClass;
 import net.hollowcube.minestom.extensions.ExtensionBootstrap;
 import net.minestom.server.MinecraftServer;
 import net.minestom.server.extras.MojangAuth;
+import net.minestom.server.extras.bungee.BungeeCordProxy;
 import net.minestom.server.extras.velocity.VelocityProxy;
 import net.minestom.server.instance.InstanceContainer;
 
@@ -46,7 +47,13 @@ public final class Samurai {
 
         switch (Samurai.config.mode.mode) {
             case ONLINE -> MojangAuth.init();
-            case VELOCITY -> VelocityProxy.enable(Samurai.config.mode.secret);
+            case VELOCITY -> VelocityProxy.enable(Samurai.config.mode.velocitySecret);
+            case BUNGEECORD -> {
+                if (!Samurai.config.mode.bungeeguardSecrets.isEmpty())
+                    BungeeCordProxy.setBungeeGuardTokens(Samurai.config.mode.bungeeguardSecrets);
+
+                BungeeCordProxy.enable();
+            }
         }
 
         Commands.init();
