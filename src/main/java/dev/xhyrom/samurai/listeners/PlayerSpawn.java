@@ -1,5 +1,6 @@
 package dev.xhyrom.samurai.listeners;
 
+import dev.xhyrom.samurai.Samurai;
 import dev.xhyrom.samurai.module.PlayerHider;
 import net.minestom.server.MinecraftServer;
 import net.minestom.server.entity.Player;
@@ -19,7 +20,8 @@ public class PlayerSpawn implements EventListener<PlayerSpawnEvent> {
     public @NotNull Result run(@NotNull PlayerSpawnEvent event) {
         Player player = event.getPlayer();
 
-        player.setReducedDebugScreenInformation(true);
+        if (!Samurai.config.debug)
+            player.setReducedDebugScreenInformation(true);
 
         for (UUID uniqueId : PlayerHider.getWantHiddenPlayers()) {
             player.updateOldViewer(MinecraftServer.getConnectionManager().getPlayer(uniqueId));

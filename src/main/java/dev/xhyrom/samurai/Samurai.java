@@ -6,7 +6,7 @@ import dev.xhyrom.samurai.config.Config;
 import dev.xhyrom.samurai.config.serializers.SerdesCustom;
 import dev.xhyrom.samurai.entity.Entities;
 import dev.xhyrom.samurai.listeners.Listeners;
-import dev.xhyrom.samurai.util.FullbrightDimension;
+import dev.xhyrom.samurai.util.Dimension;
 import dev.xhyrom.samurai.world.Worlds;
 import eu.okaeri.configs.ConfigManager;
 import eu.okaeri.configs.yaml.snakeyaml.YamlSnakeYamlConfigurer;
@@ -38,7 +38,7 @@ public final class Samurai {
         });
 
         server = ExtensionBootstrap.init();
-        instance = MinecraftServer.getInstanceManager().createInstanceContainer(FullbrightDimension.INSTANCE);
+        instance = MinecraftServer.getInstanceManager().createInstanceContainer(Dimension.INSTANCE);
 
         MinecraftServer.setBrandName(config.brand + " " + (config.debug ? "DEBUG" : ""));
 
