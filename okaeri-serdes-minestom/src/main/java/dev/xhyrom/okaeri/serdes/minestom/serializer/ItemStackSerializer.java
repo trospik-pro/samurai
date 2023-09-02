@@ -20,7 +20,7 @@ public class ItemStackSerializer implements ObjectSerializer<ItemStack> {
     @Override
     public void serialize(@NonNull ItemStack object, @NonNull SerializationData data, @NonNull GenericsDeclaration generics) {
         data.add("material", object.material());
-        data.add("displayName", object.getDisplayName());
+        data.add("displayName", MiniMessage.miniMessage().serialize(object.getDisplayName()));
         data.add("lore", object.getLore().stream().map(s -> MiniMessage.miniMessage().serialize(s)).toList());
     }
 

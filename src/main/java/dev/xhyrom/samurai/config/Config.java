@@ -40,6 +40,9 @@ public class Config extends OkaeriConfig {
     @Comment("Mode")
     public ModeConfig mode = new ModeConfig();
 
+    @Comment("Items")
+    public ItemsConfig items = new ItemsConfig();
+
     @Comment("Holograms")
     public List<Hologram> holograms = List.of(
             new Hologram(
