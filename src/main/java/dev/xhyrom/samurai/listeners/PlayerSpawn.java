@@ -2,6 +2,7 @@ package dev.xhyrom.samurai.listeners;
 
 import dev.xhyrom.samurai.Samurai;
 import dev.xhyrom.samurai.module.PlayerHider;
+import dev.xhyrom.samurai.module.PlayerScoreboard;
 import net.minestom.server.MinecraftServer;
 import net.minestom.server.entity.Player;
 import net.minestom.server.event.EventListener;
@@ -28,6 +29,8 @@ public class PlayerSpawn implements EventListener<PlayerSpawnEvent> {
         for (UUID uniqueId : PlayerHider.getWantHiddenPlayers()) {
             player.updateOldViewer(MinecraftServer.getConnectionManager().getPlayer(uniqueId));
         }
+
+        PlayerScoreboard.create(player);
 
         return Result.SUCCESS;
     }

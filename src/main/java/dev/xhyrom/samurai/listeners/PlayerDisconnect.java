@@ -1,6 +1,7 @@
 package dev.xhyrom.samurai.listeners;
 
 import dev.xhyrom.samurai.module.PlayerHider;
+import dev.xhyrom.samurai.module.PlayerScoreboard;
 import net.minestom.server.entity.Player;
 import net.minestom.server.event.EventListener;
 import net.minestom.server.event.player.PlayerDisconnectEvent;
@@ -17,6 +18,8 @@ public class PlayerDisconnect implements EventListener<PlayerDisconnectEvent> {
         Player player = event.getPlayer();
 
         PlayerHider.getWantHiddenPlayers().remove(player.getUuid());
+        PlayerScoreboard.destroy(player);
+
         return Result.SUCCESS;
     }
 }
