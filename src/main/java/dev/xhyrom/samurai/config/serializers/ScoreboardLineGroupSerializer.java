@@ -24,9 +24,9 @@ public class ScoreboardLineGroupSerializer implements ObjectSerializer<Scoreboar
 
     @Override
     public ScoreboardLineGroup deserialize(@NonNull DeserializationData data, @NonNull GenericsDeclaration generics) {
-        List<ScoreboardLine> line = data.getAsList("lines", ScoreboardLine.class);
+        List<ScoreboardLine> lines = data.getAsList("lines", ScoreboardLine.class);
         int refreshRate = data.get("refreshRate", int.class);
 
-        return new ScoreboardLineGroup(line, refreshRate);
+        return new ScoreboardLineGroup(lines, refreshRate);
     }
 }

@@ -20,8 +20,8 @@ public class ScoreboardLineSerializer implements ObjectSerializer<ScoreboardLine
 
     @Override
     public ScoreboardLine deserialize(@NonNull DeserializationData data, @NonNull GenericsDeclaration generics) {
-        String line = data.get("line", String.class);
+        String text = data.get("text", String.class);
 
-        return ScoreboardLine.of(line);
+        return ScoreboardLine.of(text);
     }
 }
