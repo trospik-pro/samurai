@@ -19,7 +19,7 @@ public class AsyncPlayerPreLogin implements EventListener<AsyncPlayerPreLoginEve
 
         if (size >= Samurai.config.maxPlayers) {
             event.getPlayer().kick(MiniMessage.miniMessage().deserialize(
-                    "<red>Server is full! Please try again later."
+                    Samurai.config.messages.serverIsFull
             ));
         }
 

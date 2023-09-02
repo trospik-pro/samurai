@@ -27,6 +27,9 @@ public class Config extends OkaeriConfig {
     @Comment("World border config")
     public WorldBorderConfig worldBorder = new WorldBorderConfig();
 
+    @Comment("Messages")
+    public MessageConfig messages = new MessageConfig();
+
     @Comment("Holograms")
     public List<Hologram> holograms = List.of(
             new Hologram(
