@@ -1,6 +1,8 @@
 package dev.xhyrom.samurai.inventory.impl;
 
 import dev.xhyrom.samurai.inventory.MenuInventory;
+import net.kyori.adventure.key.Key;
+import net.kyori.adventure.sound.Sound;
 import net.kyori.adventure.text.Component;
 import net.minestom.server.entity.Player;
 import net.minestom.server.entity.PlayerSkin;
@@ -94,6 +96,9 @@ public class ServerSelectorInventory extends MenuInventory {
 
     @Override
     public void execute(Player player, int slot) {
-        player.sendMessage(Component.text("You clicked on slot " + slot));
+        if (slot == 40) {
+            player.closeInventory();
+            player.playSound(Sound.sound(Key.key("item_book_page_turn"), Sound.Source.MUSIC, 1f, 1f));
+        }
     }
 }
