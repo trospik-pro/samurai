@@ -59,15 +59,15 @@ public class ServerSelectorInventory extends MenuInventory {
         setItemStack(
                 40,
                 ItemStack.builder(Material.PLAYER_HEAD)
-                        .displayName(translate("<#E74C3C>❌ <bold>Zavřít"))
-                        .lore(
-                                translate(
-                                        "<white>Zavři toto menu"
-                                )
-                        )
                         .meta(new PlayerHeadMeta.Builder()
                                 .skullOwner(UUID.fromString("fa7446ed-005c-4dfa-96df-5d4c362e0498"))
                                 .playerSkin(new PlayerSkin("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYzM4YWIxNDU3NDdiNGJkMDljZTAzNTQzNTQ5NDhjZTY5ZmY2ZjQxZDllMDk4YzY4NDhiODBlMTg3ZTkxOSJ9fX0=", null))
+                                .displayName(translate("<#E74C3C>❌ <bold>Zavřít"))
+                                .lore(
+                                        translate(
+                                                "<white>Zavři toto menu"
+                                        )
+                                )
                                 .tagHandler()
                         )
                         .build()
@@ -98,7 +98,7 @@ public class ServerSelectorInventory extends MenuInventory {
     public void execute(Player player, int slot) {
         if (slot == 40) {
             player.closeInventory();
-            player.playSound(Sound.sound(Key.key("item_book_page_turn"), Sound.Source.MUSIC, 1f, 1f));
+            player.playSound(Sound.sound(Key.key("item_book_page_turn"), Sound.Source.PLAYER, 1f, 1f));
         }
     }
 }
