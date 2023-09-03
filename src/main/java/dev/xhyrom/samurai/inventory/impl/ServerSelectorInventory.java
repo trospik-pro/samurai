@@ -76,16 +76,8 @@ public class ServerSelectorInventory extends MenuInventory {
             );
         }
 
-        for (int i = 36; i < 40; i++) {
-            setItemStack(
-                    i,
-                    ItemStack.builder(Material.GRAY_STAINED_GLASS_PANE)
-                            .displayName(translate(""))
-                            .build()
-            );
-        }
-
-        for (int i = 41; i < 45; i++) {
+        for (int i = 36; i < 45; i++) {
+            if (i == 40) continue;
             setItemStack(
                     i,
                     ItemStack.builder(Material.GRAY_STAINED_GLASS_PANE)
