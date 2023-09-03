@@ -27,6 +27,7 @@ public final class Commands {
         commandManager.register(new PerformanceCommand(
                 globalEventHandler
         ));
+        commandManager.register(new InventoryCommand());
         commandManager.register(new VersionCommand());
     }
 }
