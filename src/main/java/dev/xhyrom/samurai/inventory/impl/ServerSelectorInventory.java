@@ -2,14 +2,14 @@ package dev.xhyrom.samurai.inventory.impl;
 
 import dev.xhyrom.samurai.inventory.MenuInventory;
 import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.format.TextDecoration;
-import net.kyori.adventure.text.minimessage.MiniMessage;
-import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
-import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver;
 import net.minestom.server.entity.Player;
+import net.minestom.server.entity.PlayerSkin;
 import net.minestom.server.inventory.InventoryType;
 import net.minestom.server.item.ItemStack;
 import net.minestom.server.item.Material;
+import net.minestom.server.item.metadata.PlayerHeadMeta;
+
+import java.util.UUID;
 
 public class ServerSelectorInventory extends MenuInventory {
     public ServerSelectorInventory(InventoryType type, Component title) {
@@ -54,14 +54,19 @@ public class ServerSelectorInventory extends MenuInventory {
                         .build()
         );
 
-        setItemStack( //TODO: make item close menu, make it paly sound: "ITEM_BOOK_PAGE_TURN" when clicked, add basehead material
+        setItemStack(
                 40,
-                ItemStack.builder(Material.BEDROCK)
+                ItemStack.builder(Material.PLAYER_HEAD)
                         .displayName(translate("<#E74C3C>❌ <bold>Zavřít"))
                         .lore(
                                 translate(
-                                    "<white>Zavři toto menu"
+                                        "<white>Zavři toto menu"
                                 )
+                        )
+                        .meta(new PlayerHeadMeta.Builder()
+                                .skullOwner(UUID.fromString("fa7446ed-005c-4dfa-96df-5d4c362e0498"))
+                                .playerSkin(new PlayerSkin("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYzM4YWIxNDU3NDdiNGJkMDljZTAzNTQzNTQ5NDhjZTY5ZmY2ZjQxZDllMDk4YzY4NDhiODBlMTg3ZTkxOSJ9fX0=", null))
+                                .tagHandler()
                         )
                         .build()
         );

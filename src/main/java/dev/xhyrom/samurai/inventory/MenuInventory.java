@@ -24,11 +24,9 @@ public abstract class MenuInventory extends Inventory {
 
     @Override
     public boolean addViewer(@NotNull Player player) {
-        boolean result = super.addViewer(player);
-        if (result)
-            this.init(player);
+        this.init(player);
 
-        return result;
+        return super.addViewer(player);
     }
 
     public abstract void init(Player player);
