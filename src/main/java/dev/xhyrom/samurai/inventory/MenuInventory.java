@@ -1,6 +1,9 @@
 package dev.xhyrom.samurai.inventory;
 
 import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.TextDecoration;
+import net.kyori.adventure.text.minimessage.MiniMessage;
+import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver;
 import net.minestom.server.entity.Player;
 import net.minestom.server.inventory.Inventory;
 import net.minestom.server.inventory.InventoryType;
@@ -30,4 +33,8 @@ public abstract class MenuInventory extends Inventory {
 
     public abstract void init(Player player);
     public abstract void execute(Player player, int slot);
+
+    protected Component translate(String text, TagResolver... resolvers) {
+        return MiniMessage.miniMessage().deserialize(text, resolvers).decoration(TextDecoration.ITALIC, false);
+    }
 }
