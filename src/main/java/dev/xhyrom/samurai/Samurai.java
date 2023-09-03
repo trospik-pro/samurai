@@ -1,6 +1,7 @@
 package dev.xhyrom.samurai;
 
 import dev.xhyrom.okaeri.serdes.minestom.SerdesMinestom;
+import dev.xhyrom.samurai.block.Blocks;
 import dev.xhyrom.samurai.commands.Commands;
 import dev.xhyrom.samurai.config.Config;
 import dev.xhyrom.samurai.config.serializers.SerdesCustom;
@@ -59,6 +60,7 @@ public final class Samurai {
 
         Commands.init();
         Listeners.init();
+        Blocks.init();
         Worlds.init();
         Entities.init();
         PlayerScoreboard.init();
