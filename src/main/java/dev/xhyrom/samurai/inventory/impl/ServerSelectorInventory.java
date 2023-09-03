@@ -28,6 +28,7 @@ public class ServerSelectorInventory extends MenuInventory {
                                 ),
                                 translate(
                                     "<#07E844>● <white>Online Hráči: <#07E844>54"
+                                ),
                                 translate(
                                     "<#07E844>● <white>Verze: <#07E844>1.19.4 + <dark_gray>(<gray>Doporučujeme <#07E844>1.20.1<dark_gray>)"
                                 ),
