@@ -13,7 +13,7 @@ import net.minestom.server.inventory.InventoryType;
 import java.util.logging.Level;
 
 public enum Inventories {
-    SERVER_SELECTOR(ServerSelectorInventory.class, InventoryType.CHEST_3_ROW, Component.text("Herní módy")),
+    SERVER_SELECTOR(ServerSelectorInventory.class, InventoryType.CHEST_5_ROW, Component.text("Herní módy")),
     DEMO(DemoInventory.class, InventoryType.WINDOW_3X3, MiniMessage.miniMessage().deserialize(
             "<gradient:#1E9AFE:#60DFCD><title></gradient>",
             Placeholder.unparsed("title", SamuraiBootstrap.PACKAGE.getImplementationTitle())

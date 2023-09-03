@@ -30,7 +30,7 @@ public class ServerSelectorInventory extends MenuInventory {
                                     "<#07E844>● <white>Online Hráči: <#07E844>54"
                                 ),
                                 translate(
-                                    "<#07E844>● <white>Verze: <#07E844>1.19.4 + <dark_gray>(<gray>Doporučujeme <#07E844>1.20.1<dark_gray>)"
+                                    "<#07E844>● <white>Verze: <#07E844>1.19.4+ <dark_gray>(<gray>Doporučujeme <#07E844>1.20.1<dark_gray>)"
                                 ),
                                 translate(
                                     ""
@@ -53,6 +53,46 @@ public class ServerSelectorInventory extends MenuInventory {
                         )
                         .build()
         );
+
+        setItemStack( //TODO: make item close menu, make it paly sound: "ITEM_BOOK_PAGE_TURN" when clicked, add basehead material
+                40,
+                ItemStack.builder(Material.BEDROCK)
+                        .displayName(translate("<#E74C3C>❌ <bold>Zavřít"))
+                        .lore(
+                                translate(
+                                    "<white>Zavři toto menu"
+                                )
+                        )
+                        .build()
+        );
+
+        // oliverkov for lúp
+        for (int i = 0; i < 9; i++) {
+            setItemStack(
+                    i,
+                    ItemStack.builder(Material.GRAY_STAINED_GLASS_PANE)
+                            .displayName(translate(""))
+                            .build()
+            );
+        }
+
+        for (int i = 36; i < 40; i++) {
+            setItemStack(
+                    i,
+                    ItemStack.builder(Material.GRAY_STAINED_GLASS_PANE)
+                            .displayName(translate(""))
+                            .build()
+            );
+        }
+
+        for (int i = 41; i < 45; i++) {
+            setItemStack(
+                    i,
+                    ItemStack.builder(Material.GRAY_STAINED_GLASS_PANE)
+                            .displayName(translate(""))
+                            .build()
+            );
+        }
     }
 
     @Override
