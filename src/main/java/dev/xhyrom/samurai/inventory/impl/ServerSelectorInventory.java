@@ -98,7 +98,7 @@ public class ServerSelectorInventory extends MenuInventory {
     public void execute(Player player, int slot) {
         if (slot == 40) {
             player.closeInventory();
-            player.playSound(Sound.sound(Key.key("item_book_page_turn"), Sound.Source.PLAYER, 1f, 1f));
+            player.playSound(Sound.sound(Key.key("item.book.page_turn"), Sound.Source.PLAYER, 1f, 1f));
         }
     }
 }
