@@ -19,26 +19,22 @@ public class Items {
         switch (slot) {
             case 0 -> {
                 Inventories.SERVER_SELECTOR.show(player);
-                // Server selector
-            }
-            case 1 -> {
-                player.sendMessage(MiniMessage.miniMessage().deserialize("<red>Coming soon1!"));
-                // Lobby selector
             }
             case 4 -> {
-                player.sendMessage(MiniMessage.miniMessage().deserialize("<red>Coming soon4!"));
-                // Store
+                player.sendMessage(MiniMessage.miniMessage().deserialize(Samurai.config.messages.store));
             }
             case 8 -> {
                 PlayerHider.Action action = PlayerHider.toggle(player);
 
                 if (action == PlayerHider.Action.COOLDOWN_HIT) {
-                    player.sendMessage(MiniMessage.miniMessage().deserialize("<red>Please wait before doing that again!"));
+                    player.sendMessage(MiniMessage.miniMessage().deserialize(Samurai.config.messages.cooldown));
+                    return;
                 } else if (action == PlayerHider.Action.HIDE) {
                     player.getInventory().setItemStack(8, Samurai.config.items.playerHiderShow);
-                } else {
-                    player.getInventory().setItemStack(8, Samurai.config.items.playerHiderHide);
+                    return;
                 }
+
+                player.getInventory().setItemStack(8, Samurai.config.items.playerHiderHide);
             }
         }
     }

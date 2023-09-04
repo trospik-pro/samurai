@@ -9,4 +9,10 @@ public class MessageConfig extends OkaeriConfig {
 
     @Comment("Server is full")
     public String serverIsFull = "<red>Server is full! Please try again later.";
+
+    @Comment("Store message")
+    public String store = "<gradient:#1e9afe:#60DFCD>Store</gradient> <#60DFCD>Coming soon!";
+
+    @Comment("Cooldown message")
+    public String cooldown = "<red>Please wait before doing that again!";
 }
