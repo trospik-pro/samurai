@@ -2,7 +2,6 @@ package dev.xhyrom.samurai.inventory.impl;
 
 import dev.xhyrom.samurai.SamuraiBootstrap;
 import dev.xhyrom.samurai.inventory.MenuInventory;
-import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextDecoration;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
@@ -12,8 +11,11 @@ import net.minestom.server.item.ItemStack;
 import net.minestom.server.item.Material;
 
 public class DemoInventory extends MenuInventory {
-    public DemoInventory(InventoryType type, Component title) {
-        super(type, title);
+    public DemoInventory() {
+        super(InventoryType.WINDOW_3X3, MiniMessage.miniMessage().deserialize(
+                "<gradient:#1E9AFE:#60DFCD><title></gradient>",
+                Placeholder.unparsed("title", SamuraiBootstrap.PACKAGE.getImplementationTitle())
+        ));
     }
 
     @Override

@@ -14,8 +14,8 @@ import net.minestom.server.item.metadata.PlayerHeadMeta;
 import java.util.UUID;
 
 public class ServerSelectorInventory extends MenuInventory {
-    public ServerSelectorInventory(InventoryType type, Component title) {
-        super(type, title);
+    public ServerSelectorInventory() {
+        super(InventoryType.CHEST_5_ROW, Component.text("Herní módy"));
     }
 
     @Override
