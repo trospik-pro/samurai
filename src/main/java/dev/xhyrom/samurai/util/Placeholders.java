@@ -11,6 +11,7 @@ import java.util.Date;
 
 @UtilityClass
 public class Placeholders {
+
     public TagResolver apply(Player player) {
         return TagResolver.resolver(
                 "papi",
@@ -27,6 +28,12 @@ public class Placeholders {
                             SimpleDateFormat dateFormat = new SimpleDateFormat(format);
 
                             return Tag.selfClosingInserting(Component.text(dateFormat.format(date)));
+                        }
+                        case "luckperms" -> {
+                            String type = tag.pop().value();
+
+                            if (type.equalsIgnoreCase("rank"))
+                                return Tag.selfClosingInserting(Component.text(LuckPermsAccessor.getPrimaryGroup(player.getUuid())));
                         }
                     }
 

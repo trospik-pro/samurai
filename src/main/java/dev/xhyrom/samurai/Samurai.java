@@ -9,6 +9,7 @@ import dev.xhyrom.samurai.entity.Entities;
 import dev.xhyrom.samurai.listeners.Listeners;
 import dev.xhyrom.samurai.module.PlayerScoreboard;
 import dev.xhyrom.samurai.util.Dimension;
+import dev.xhyrom.samurai.util.LuckPermsAccessor;
 import dev.xhyrom.samurai.world.Worlds;
 import eu.okaeri.configs.ConfigManager;
 import eu.okaeri.configs.yaml.snakeyaml.YamlSnakeYamlConfigurer;
@@ -66,11 +67,22 @@ public final class Samurai {
         PlayerScoreboard.init();
     }
 
+    private static void postInit() {
+        // Init luckperms accessor
+        try {
+            LuckPermsAccessor.init();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public static void run() {
         String[] address = config.address.split(":");
         String ip = address[0];
         int port = address.length > 1 ? Integer.parseInt(address[1]) : 25565;
 
         server.start(ip, port);
+
+        postInit();
     }
 }
