@@ -19,7 +19,5 @@ public class RedisPubSubListener extends JedisPubSub {
 
             ServerPlayerCount.set(name, count);
         }
-
-        System.out.println("Message received. Channel: " + channel + ", Msg: " + message);
     }
 }
