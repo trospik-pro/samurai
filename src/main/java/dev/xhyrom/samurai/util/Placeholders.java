@@ -35,6 +35,11 @@ public class Placeholders {
                             if (type.equalsIgnoreCase("rank"))
                                 return Tag.selfClosingInserting(Component.text(LuckPermsAccessor.getPrimaryGroup(player.getUuid())));
                         }
+                        case "playercount" -> {
+                            String serverName = tag.pop().value();
+
+                            return Tag.selfClosingInserting(Component.text(String.valueOf(ServerPlayerCount.get(serverName))));
+                        }
                     }
 
                     return Tag.selfClosingInserting(Component.text(""));
