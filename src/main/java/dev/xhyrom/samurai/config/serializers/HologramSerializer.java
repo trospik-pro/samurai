@@ -23,6 +23,7 @@ public class HologramSerializer implements ObjectSerializer<Hologram> {
         data.add("shadow", object.shadow());
         data.add("bgColor", object.bgColor());
         data.add("scale", object.scale());
+        data.add("textRefreshRate", object.textRefreshRate());
     }
 
     @Override
@@ -32,10 +33,12 @@ public class HologramSerializer implements ObjectSerializer<Hologram> {
         boolean shadow = data.get("shadow", Boolean.class);
         int bgColor = data.get("bgColor", Integer.class);
         Vec scale = data.get("scale", Vec.class);
+        int textRefreshRate = data.get("textRefreshRate", Integer.class);
 
         return new Hologram(location, text)
                 .shadow(shadow)
                 .bgColor(bgColor)
-                .scale(scale);
+                .scale(scale)
+                .textRefreshRate(textRefreshRate);
     }
 }

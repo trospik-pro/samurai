@@ -17,7 +17,12 @@ public class ServerPlayerCount {
         return count;
     }
 
-    public static void set(String server, Integer count) {
+    public static void set(String server, int count) {
+        if (count == 0) {
+            SERVER_PLAYER_COUNT.remove(server);
+            return;
+        }
+
         SERVER_PLAYER_COUNT.put(server, count);
     }
 }
