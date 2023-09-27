@@ -32,6 +32,9 @@ dependencies {
     // World loaders
     implementation("com.github.nindza-pro:polar:392f8852")
 
+    // Messaging
+    implementation("redis.clients:jedis:5.0.0")
+
     implementation("com.google.guava:guava:32.1.2-jre")
     implementation("net.kyori:adventure-text-minimessage:4.13.1")
 

@@ -7,6 +7,7 @@ import dev.xhyrom.samurai.config.Config;
 import dev.xhyrom.samurai.config.serializers.SerdesCustom;
 import dev.xhyrom.samurai.entity.Entities;
 import dev.xhyrom.samurai.listeners.Listeners;
+import dev.xhyrom.samurai.listeners.RedisPubSubListener;
 import dev.xhyrom.samurai.module.PlayerScoreboard;
 import dev.xhyrom.samurai.util.Dimension;
 import dev.xhyrom.samurai.util.LuckPermsAccessor;
@@ -20,6 +21,7 @@ import net.minestom.server.extras.MojangAuth;
 import net.minestom.server.extras.bungee.BungeeCordProxy;
 import net.minestom.server.extras.velocity.VelocityProxy;
 import net.minestom.server.instance.InstanceContainer;
+import redis.clients.jedis.*;
 
 import java.nio.file.Path;
 import java.util.logging.Logger;
@@ -27,6 +29,9 @@ import java.util.logging.Logger;
 @UtilityClass
 public final class Samurai {
     public static ExtensionBootstrap server;
+    public static Jedis redisPub;
+    public static Jedis redisSub;
+
     public static InstanceContainer instance;
     public static Config config;
     public static Logger logger = Logger.getLogger("Samurai");
@@ -65,6 +70,17 @@ public final class Samurai {
         Worlds.init();
         Entities.init();
         PlayerScoreboard.init();
+
+        JedisPool jedisPool = new JedisPool(new HostAndPort(config.redis.host, config.redis.port), DefaultJedisClientConfig.builder()
+                .password(config.redis.password)
+                .build());
+
+        redisPub = jedisPool.getResource();
+        redisSub = jedisPool.getResource();
+
+        new Thread(() -> {
+            redisSub.subscribe(new RedisPubSubListener(), "vspc");
+        }).start();
     }
 
     private static void postInit() {
@@ -82,6 +98,8 @@ public final class Samurai {
         int port = address.length > 1 ? Integer.parseInt(address[1]) : 25565;
 
         server.start(ip, port);
+
+        redisPub.publish("vspc-request", "get-players");
 
         postInit();
     }

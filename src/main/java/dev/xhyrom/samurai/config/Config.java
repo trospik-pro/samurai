@@ -62,6 +62,9 @@ public class Config extends OkaeriConfig {
             ).skin("general_kubo").action(Inventories.DEMO)
     );
 
+    @Comment("Redis")
+    public RedisConfig redis = new RedisConfig();
+
     @Comment("Debug mode")
     @Comment("Enables few commands and other features for debugging")
     @Comment("This should be disabled in production")
