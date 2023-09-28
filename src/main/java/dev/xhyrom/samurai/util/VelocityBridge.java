@@ -34,6 +34,9 @@ public class VelocityBridge {
     }
 
     public static void fetchServerPlayerCounts() {
+        if (Samurai.redisPub == null)
+            return;
+
         Samurai.redisPub.publish("vspc-request", "get-players");
     }
 
