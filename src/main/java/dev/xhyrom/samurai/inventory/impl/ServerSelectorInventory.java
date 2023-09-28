@@ -1,6 +1,7 @@
 package dev.xhyrom.samurai.inventory.impl;
 
 import dev.xhyrom.samurai.inventory.MenuInventory;
+import dev.xhyrom.samurai.util.VelocityBridge;
 import net.kyori.adventure.key.Key;
 import net.kyori.adventure.sound.Sound;
 import net.kyori.adventure.text.Component;
@@ -99,6 +100,11 @@ public class ServerSelectorInventory extends MenuInventory {
         if (slot == 40) {
             player.closeInventory();
             player.playSound(Sound.sound(Key.key("item.book.page_turn"), Sound.Source.PLAYER, 1f, 1f));
+            return;
+        }
+
+        if (slot == 22) {
+            VelocityBridge.sendPlayerToServer(player, "obm");
         }
     }
 }
