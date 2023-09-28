@@ -92,8 +92,6 @@ public final class Samurai {
         } catch (Exception e) {
             logger.severe("Failed to connect to Redis: ");
             logger.throwing("Samurai", "init", e);
-
-            System.exit(1);
         }
     }
 
