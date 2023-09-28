@@ -22,6 +22,7 @@ import net.minestom.server.extras.MojangAuth;
 import net.minestom.server.extras.bungee.BungeeCordProxy;
 import net.minestom.server.extras.velocity.VelocityProxy;
 import net.minestom.server.instance.InstanceContainer;
+import net.minestom.server.timer.ExecutionType;
 import redis.clients.jedis.*;
 
 import java.nio.file.Path;
@@ -83,7 +84,7 @@ public final class Samurai {
 
             MinecraftServer.getSchedulerManager().buildTask(() -> {
                 redisSub.subscribe(new RedisPubSubListener(), "vspc");
-            }).schedule();
+            }).executionType(ExecutionType.ASYNC).schedule();
 
             // Close jedis pool on shutdown
             MinecraftServer.getSchedulerManager().buildShutdownTask(() -> {
