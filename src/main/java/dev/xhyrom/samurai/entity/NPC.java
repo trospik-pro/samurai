@@ -1,6 +1,6 @@
 package dev.xhyrom.samurai.entity;
 
-import dev.xhyrom.samurai.inventory.Inventories;
+import dev.xhyrom.samurai.action.Action;
 import dev.xhyrom.samurai.team.Teams;
 import lombok.Getter;
 import net.minestom.server.MinecraftServer;
@@ -23,7 +23,7 @@ public class NPC extends EntityCreature {
     private final Point location;
     private PlayerSkin skin;
     private String skinName;
-    private Inventories action;
+    private Action action;
 
     public NPC(@NotNull Point location) {
         super(EntityType.PLAYER);
@@ -56,13 +56,13 @@ public class NPC extends EntityCreature {
         return this;
     }
 
-    public NPC action(@NotNull Inventories action) {
+    public NPC action(@NotNull Action action) {
         this.action = action;
 
         return this;
     }
 
-    public Inventories action() {
+    public Action action() {
         return this.action;
     }
 
@@ -82,13 +82,15 @@ public class NPC extends EntityCreature {
     public void handle(@NotNull EntityAttackEvent event) {
         if (event.getTarget() != this) return;
         if (!(event.getEntity() instanceof Player player)) return;
-        action.show(player);
+
+        action.execute(player);
     }
 
     public void handle(@NotNull PlayerEntityInteractEvent event) {
         if (event.getTarget() != this) return;
         if (event.getHand() != Player.Hand.MAIN) return;
-        action.show(event.getPlayer());
+
+        action.execute(event.getPlayer());
     }
 
     @Override

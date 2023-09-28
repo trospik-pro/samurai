@@ -28,7 +28,7 @@ public class Placeholders {
                         case "playercount" -> {
                             String serverName = tag.pop().value();
 
-                            return Tag.selfClosingInserting(Component.text(String.valueOf(ServerPlayerCount.get(serverName))));
+                            return Tag.selfClosingInserting(Component.text(String.valueOf(VelocityBridge.getServerPlayerCount(serverName))));
                         }
                     }
 
@@ -63,7 +63,7 @@ public class Placeholders {
                         case "playercount" -> {
                             String serverName = tag.pop().value();
 
-                            return Tag.selfClosingInserting(Component.text(String.valueOf(ServerPlayerCount.get(serverName))));
+                            return Tag.selfClosingInserting(Component.text(String.valueOf(VelocityBridge.getServerPlayerCount(serverName))));
                         }
                     }
 

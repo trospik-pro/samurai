@@ -1,7 +1,7 @@
 package dev.xhyrom.samurai.config.serializers;
 
+import dev.xhyrom.samurai.action.Action;
 import dev.xhyrom.samurai.entity.NPC;
-import dev.xhyrom.samurai.inventory.Inventories;
 import eu.okaeri.configs.schema.GenericsDeclaration;
 import eu.okaeri.configs.serdes.DeserializationData;
 import eu.okaeri.configs.serdes.ObjectSerializer;
@@ -26,7 +26,7 @@ public class NPCSerializer implements ObjectSerializer<NPC> {
     public NPC deserialize(@NonNull DeserializationData data, @NonNull GenericsDeclaration generics) {
         Pos location = data.get("location", Pos.class);
         String skin = data.get("skin", String.class);
-        Inventories action = data.get("action", Inventories.class);
+        Action action = data.get("action", Action.class);
 
         return new NPC(location).skin(skin).action(action);
     }

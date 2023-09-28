@@ -1,5 +1,6 @@
 package dev.xhyrom.samurai.config;
 
+import dev.xhyrom.samurai.action.Action;
 import dev.xhyrom.samurai.entity.Hologram;
 import dev.xhyrom.samurai.entity.NPC;
 import dev.xhyrom.samurai.inventory.Inventories;
@@ -59,7 +60,7 @@ public class Config extends OkaeriConfig {
     public List<NPC> npcs = List.of(
             new NPC(
                     new Pos(90, 61, 91, 137.4f, 0.0f)
-            ).skin("general_kubo").action(Inventories.DEMO)
+            ).skin("general_kubo").action(Action.of(Inventories.DEMO))
     );
 
     @Comment("Redis")

@@ -11,6 +11,7 @@ import dev.xhyrom.samurai.listeners.RedisPubSubListener;
 import dev.xhyrom.samurai.module.PlayerScoreboard;
 import dev.xhyrom.samurai.util.Dimension;
 import dev.xhyrom.samurai.util.LuckPermsAccessor;
+import dev.xhyrom.samurai.util.VelocityBridge;
 import dev.xhyrom.samurai.world.Worlds;
 import eu.okaeri.configs.ConfigManager;
 import eu.okaeri.configs.yaml.snakeyaml.YamlSnakeYamlConfigurer;
@@ -31,6 +32,7 @@ public final class Samurai {
     public static ExtensionBootstrap server;
     public static Jedis redisPub;
     public static Jedis redisSub;
+    private static JedisPool jedisPool;
 
     public static InstanceContainer instance;
     public static Config config;
@@ -71,16 +73,28 @@ public final class Samurai {
         Entities.init();
         PlayerScoreboard.init();
 
-        JedisPool jedisPool = new JedisPool(new HostAndPort(config.redis.host, config.redis.port), DefaultJedisClientConfig.builder()
-                .password(config.redis.password)
-                .build());
+        try {
+            jedisPool = new JedisPool(new HostAndPort(config.redis.host, config.redis.port), DefaultJedisClientConfig.builder()
+                    .password(config.redis.password)
+                    .build());
 
-        redisPub = jedisPool.getResource();
-        redisSub = jedisPool.getResource();
+            redisPub = jedisPool.getResource();
+            redisSub = jedisPool.getResource();
 
-        new Thread(() -> {
-            redisSub.subscribe(new RedisPubSubListener(), "vspc");
-        }).start();
+            MinecraftServer.getSchedulerManager().buildTask(() -> {
+                redisSub.subscribe(new RedisPubSubListener(), "vspc");
+            }).schedule();
+
+            // Close jedis pool on shutdown
+            MinecraftServer.getSchedulerManager().buildShutdownTask(() -> {
+                jedisPool.close();
+            });
+        } catch (Exception e) {
+            logger.severe("Failed to connect to Redis: ");
+            logger.throwing("Samurai", "init", e);
+
+            System.exit(1);
+        }
     }
 
     private static void postInit() {
@@ -99,7 +113,7 @@ public final class Samurai {
 
         server.start(ip, port);
 
-        redisPub.publish("vspc-request", "get-players");
+        VelocityBridge.fetchServerPlayerCounts();
 
         postInit();
     }

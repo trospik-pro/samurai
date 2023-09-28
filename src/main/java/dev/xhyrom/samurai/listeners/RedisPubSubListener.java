@@ -1,6 +1,6 @@
 package dev.xhyrom.samurai.listeners;
 
-import dev.xhyrom.samurai.util.ServerPlayerCount;
+import dev.xhyrom.samurai.util.VelocityBridge;
 import redis.clients.jedis.JedisPubSub;
 
 public class RedisPubSubListener extends JedisPubSub {
@@ -17,7 +17,7 @@ public class RedisPubSubListener extends JedisPubSub {
             String name = data[0];
             Integer count = Integer.parseInt(data[1]);
 
-            ServerPlayerCount.set(name, count);
+            VelocityBridge.setServerPlayerCount(name, count);
         }
     }
 }
