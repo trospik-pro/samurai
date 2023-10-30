@@ -12,9 +12,11 @@ import java.util.HashMap;
 public class VelocityBridge {
     private static final HashMap<String, Integer> SERVER_PLAYER_COUNT = new HashMap<>();
 
-    public static Integer getServerPlayerCount(String server) {
-        String[] servers = server.split(",");
+    public static Integer getServerPlayerCount(String serverNames) {
+        return getServerPlayerCount(serverNames.split(","));
+    }
 
+    public static Integer getServerPlayerCount(String[] servers) {
         int count = 0;
 
         for (String s : servers) {

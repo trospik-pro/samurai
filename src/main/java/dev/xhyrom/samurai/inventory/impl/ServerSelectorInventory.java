@@ -5,6 +5,7 @@ import dev.xhyrom.samurai.util.VelocityBridge;
 import net.kyori.adventure.key.Key;
 import net.kyori.adventure.sound.Sound;
 import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import net.minestom.server.entity.Player;
 import net.minestom.server.entity.PlayerSkin;
 import net.minestom.server.inventory.InventoryType;
@@ -15,6 +16,10 @@ import net.minestom.server.item.metadata.PlayerHeadMeta;
 import java.util.UUID;
 
 public class ServerSelectorInventory extends MenuInventory {
+    private static String[] oneblock = new String[] {
+            "obm", "obp", "obd"
+    };
+
     public ServerSelectorInventory() {
         super(InventoryType.CHEST_5_ROW, Component.text("Herní módy"));
     }
@@ -30,7 +35,8 @@ public class ServerSelectorInventory extends MenuInventory {
                                     "<#07E844><bold>OneBlock"
                                 ),
                                 translate(
-                                    "<#07E844>● <white>Online Hráči: <#07E844>54"
+                                    "<#07E844>● <white>Online Hráči: <#07E844><online>",
+                                        Placeholder.parsed("online", VelocityBridge.getServerPlayerCount(oneblock).toString())
                                 ),
                                 translate(
                                     "<#07E844>● <white>Verze: <#07E844>1.19.4+ <dark_gray>(<gray>Doporučujeme <#07E844>1.20.1<dark_gray>)"
