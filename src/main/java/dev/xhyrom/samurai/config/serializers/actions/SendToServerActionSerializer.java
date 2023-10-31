@@ -10,12 +10,12 @@ import lombok.NonNull;
 public class SendToServerActionSerializer extends ActionSerializer<SendToServerAction> {
     @Override
     protected void serializeExtend(@NonNull SendToServerAction object, @NonNull SerializationData data, @NonNull GenericsDeclaration generics) {
-        data.add("server-name", object.getServerName());
+        data.add("serverName", object.getServerName());
     }
 
     @Override
     protected SendToServerAction deserializeExtend(@NonNull ActionType type, @NonNull DeserializationData data, @NonNull GenericsDeclaration generics) {
-        String serverName = data.get("server-name", String.class);
+        String serverName = data.get("serverName", String.class);
 
         return SendToServerAction.of(serverName);
     }
