@@ -1,9 +1,9 @@
 package dev.xhyrom.samurai.config;
 
-import dev.xhyrom.samurai.action.Action;
+import dev.xhyrom.samurai.action.impl.OpenInventoryAction;
 import dev.xhyrom.samurai.entity.Hologram;
 import dev.xhyrom.samurai.entity.NPC;
-import dev.xhyrom.samurai.inventory.Inventories;
+import dev.xhyrom.samurai.inventory.Inventory;
 import eu.okaeri.configs.OkaeriConfig;
 import eu.okaeri.configs.annotation.Comment;
 import eu.okaeri.configs.annotation.Variable;
@@ -60,7 +60,7 @@ public class Config extends OkaeriConfig {
     public List<NPC> npcs = List.of(
             new NPC(
                     new Pos(90, 61, 91, 137.4f, 0.0f)
-            ).skin("general_kubo").action(Action.of(Inventories.DEMO))
+            ).skin("general_kubo").action(OpenInventoryAction.of(Inventory.DEMO))
     );
 
     @Comment("Redis")

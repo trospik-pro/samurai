@@ -7,13 +7,13 @@ import net.minestom.server.entity.Player;
 
 import java.util.logging.Level;
 
-public enum Inventories {
+public enum Inventory {
     SERVER_SELECTOR(ServerSelectorInventory.class),
     DEMO(DemoInventory.class);
 
     private final Class<? extends MenuInventory> clazz;
 
-    Inventories(Class<? extends MenuInventory> clazz) {
+    Inventory(Class<? extends MenuInventory> clazz) {
         this.clazz = clazz;
     }
 

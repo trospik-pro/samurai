@@ -1,7 +1,7 @@
 package dev.xhyrom.samurai.item;
 
 import dev.xhyrom.samurai.Samurai;
-import dev.xhyrom.samurai.inventory.Inventories;
+import dev.xhyrom.samurai.inventory.Inventory;
 import dev.xhyrom.samurai.module.PlayerHider;
 import lombok.experimental.UtilityClass;
 import net.kyori.adventure.text.minimessage.MiniMessage;
@@ -18,7 +18,7 @@ public class Items {
     public static void handle(Player player, byte slot) {
         switch (slot) {
             case 0 -> {
-                Inventories.SERVER_SELECTOR.show(player);
+                Inventory.SERVER_SELECTOR.show(player);
             }
             case 4 -> {
                 player.sendMessage(MiniMessage.miniMessage().deserialize(Samurai.config.messages.store));
