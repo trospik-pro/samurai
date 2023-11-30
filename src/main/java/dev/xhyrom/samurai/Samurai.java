@@ -76,7 +76,7 @@ public final class Samurai {
 
         try {
             jedisPool = new JedisPool(new HostAndPort(config.redis.host, config.redis.port), DefaultJedisClientConfig.builder()
-                    .password(config.redis.password)
+                    .password(config.redis.password.isEmpty() ? null : config.redis.password)
                     .build());
 
             redisPub = jedisPool.getResource();
