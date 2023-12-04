@@ -20,21 +20,18 @@ public class ListCommand extends Command {
             setCondition((sender, commandString) -> sender.hasPermission("samurai.command.list"));
 
         setDefaultExecutor((sender, context) -> {
-            final Collection<Player> players = MinecraftServer.getConnectionManager().getOnlinePlayers();
-            final int playerCount = players.size();
-
             sender.sendMessage(MiniMessage.miniMessage().deserialize(
                     "<gradient:#1E9AFE:#60DFCD><title> <white>• There are </white><online> <white>of a max of </white><max> <white>players online: ",
                     Placeholder.unparsed("title", SamuraiBootstrap.PACKAGE.getImplementationTitle()),
-                    Placeholder.unparsed("online", String.valueOf(playerCount)),
+                    Placeholder.unparsed("online", String.valueOf(MinecraftServer.getConnectionManager().getOnlinePlayerCount())),
                     Placeholder.unparsed("max", String.valueOf(Samurai.config.maxPlayers))
             ));
         });
 
         ArgumentLiteral literalArgument = ArgumentType.Literal("--print-all");
         addSyntax((sender, context) -> {
-            final Collection<Player> players = MinecraftServer.getConnectionManager().getOnlinePlayers();
-            final int playerCount = players.size();
+            final Collection<Player> players = MinecraftServer.getConnectionManager().getPlayers();
+            final int playerCount = MinecraftServer.getConnectionManager().getOnlinePlayerCount();
 
             sender.sendMessage(MiniMessage.miniMessage().deserialize(
                     "<gradient:#1E9AFE:#60DFCD><title> <white>• There are </white><online> <white>of a max of </white><max> <white>players online: <gray><players>",

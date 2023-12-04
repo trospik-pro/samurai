@@ -22,7 +22,7 @@ repositories {
 
 dependencies {
     // Server implementation
-    implementation("dev.hollowcube:minestom-ce:a22d769740")
+    implementation("dev.hollowcube:minestom-ce-snapshots:1_20_2-e7f833b499")
     implementation("dev.hollowcube:minestom-ce-extensions:1.2.0")
 
     // Config loader
@@ -30,7 +30,7 @@ dependencies {
     implementation(project(":okaeri-serdes-minestom"))
 
     // World loaders
-    implementation("com.github.nindza-pro:polar:392f8852")
+    implementation("dev.hollowcube:polar:1.4.0")
 
     // Messaging
     implementation("redis.clients:jedis:5.0.0")

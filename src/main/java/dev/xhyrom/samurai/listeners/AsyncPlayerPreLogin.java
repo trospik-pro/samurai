@@ -15,7 +15,7 @@ public class AsyncPlayerPreLogin implements EventListener<AsyncPlayerPreLoginEve
 
     @Override
     public @NotNull Result run(@NotNull AsyncPlayerPreLoginEvent event) {
-        int size = MinecraftServer.getConnectionManager().getOnlinePlayers().size();
+        int size = MinecraftServer.getConnectionManager().getOnlinePlayerCount();
 
         if (size >= Samurai.config.maxPlayers) {
             event.getPlayer().kick(MiniMessage.miniMessage().deserialize(

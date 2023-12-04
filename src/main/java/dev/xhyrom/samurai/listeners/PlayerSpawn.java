@@ -1,9 +1,12 @@
 package dev.xhyrom.samurai.listeners;
 
 import dev.xhyrom.samurai.Samurai;
+import dev.xhyrom.samurai.item.Items;
 import dev.xhyrom.samurai.module.PlayerHider;
 import dev.xhyrom.samurai.module.PlayerScoreboard;
+import dev.xhyrom.samurai.team.Teams;
 import net.minestom.server.MinecraftServer;
+import net.minestom.server.entity.GameMode;
 import net.minestom.server.entity.Player;
 import net.minestom.server.event.EventListener;
 import net.minestom.server.event.player.PlayerSpawnEvent;
@@ -22,6 +25,14 @@ public class PlayerSpawn implements EventListener<PlayerSpawnEvent> {
         Player player = event.getPlayer();
 
         player.setEnableRespawnScreen(false);
+        player.setRespawnPoint(Samurai.config.spawn);
+        player.setGameMode(GameMode.ADVENTURE);
+        player.setInvulnerable(true);
+
+        Items.give(player);
+
+        // Set team
+        player.setTeam(Teams.NO_COLLISIONS);
 
         if (!Samurai.config.debug)
             player.setReducedDebugScreenInformation(true);

@@ -10,7 +10,6 @@ import dev.xhyrom.samurai.listeners.Listeners;
 import dev.xhyrom.samurai.listeners.RedisPubSubListener;
 import dev.xhyrom.samurai.module.PlayerScoreboard;
 import dev.xhyrom.samurai.util.Dimension;
-import dev.xhyrom.samurai.util.LuckPermsAccessor;
 import dev.xhyrom.samurai.util.VelocityBridge;
 import dev.xhyrom.samurai.world.Worlds;
 import eu.okaeri.configs.ConfigManager;
@@ -23,7 +22,10 @@ import net.minestom.server.extras.bungee.BungeeCordProxy;
 import net.minestom.server.extras.velocity.VelocityProxy;
 import net.minestom.server.instance.InstanceContainer;
 import net.minestom.server.timer.ExecutionType;
-import redis.clients.jedis.*;
+import redis.clients.jedis.DefaultJedisClientConfig;
+import redis.clients.jedis.HostAndPort;
+import redis.clients.jedis.Jedis;
+import redis.clients.jedis.JedisPool;
 
 import java.nio.file.Path;
 import java.util.logging.Logger;
@@ -99,7 +101,8 @@ public final class Samurai {
     private static void postInit() {
         // Init luckperms accessor
         try {
-            LuckPermsAccessor.init();
+            // TODO: fix this
+            //LuckPermsAccessor.init();
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
