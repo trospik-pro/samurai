@@ -10,6 +10,7 @@ import dev.xhyrom.samurai.listeners.Listeners;
 import dev.xhyrom.samurai.listeners.RedisPubSubListener;
 import dev.xhyrom.samurai.module.PlayerScoreboard;
 import dev.xhyrom.samurai.util.Dimension;
+import dev.xhyrom.samurai.util.LuckPermsAccessor;
 import dev.xhyrom.samurai.util.VelocityBridge;
 import dev.xhyrom.samurai.world.Worlds;
 import eu.okaeri.configs.ConfigManager;
@@ -101,8 +102,7 @@ public final class Samurai {
     private static void postInit() {
         // Init luckperms accessor
         try {
-            // TODO: fix this
-            //LuckPermsAccessor.init();
+            LuckPermsAccessor.init();
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
