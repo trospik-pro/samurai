@@ -22,7 +22,7 @@ repositories {
 
 dependencies {
     // Server implementation
-    implementation("dev.hollowcube:minestom-ce-snapshots:1_20_2-e7f833b499")
+    implementation("dev.hollowcube:minestom-ce-snapshots:1_20_2-a8a5242106")
     implementation("dev.hollowcube:minestom-ce-extensions:1.2.0")
 
     // Config loader
