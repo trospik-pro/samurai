@@ -45,13 +45,22 @@ public class ServerSelectorInventory extends MenuInventory {
                                     ""
                                 ),
                                 translate(
-                                    "<gray>Lorem ipsum dolor sit amet, consectetur"
+                                    "<gray>OneBlock, se kterým ztratíš pojem o čase! "
                                 ),
                                 translate(
-                                    "<gray>dipiscing elit, sed do eiusmod tempor"
+                                    "<gray>Na Oneblocku najdeš spoustu vychatávek,"
                                 ),
                                 translate(
-                                    "<gray>ut labore et dolore magna aliqua."
+                                    "<gray>které náš Oneblock mód odlišují od jiných! "
+                                ),
+                                translate(
+                                    "<gray>Létej na svým ostrovem v letadle,"
+                                ),
+                                translate(
+                                    "<gray>postav si na ostrově pevnost nebo zabíjej bosse! "
+                                ),
+                                translate(
+                                    "<gray>Nebo nejlépe všechno najednou!"
                                 ),
                                 translate(
                                     ""
